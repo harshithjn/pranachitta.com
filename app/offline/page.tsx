@@ -4,6 +4,65 @@ import { Heart, Phone, Mail, MapPin, Clock, Sparkles, Users, Star, Leaf } from "
 import { Button } from "@/components/ui/button"
 import ContactForm from "@/components/ContactForm"
 
+// ✅ Define type for session items
+type Session = {
+  duration: string
+  price: string
+  popular: boolean
+  note?: string
+}
+
+// ✅ Type for pricing data
+const pricingData: {
+  [key: string]: {
+    title: string
+    icon: JSX.Element
+    sessions: Session[]
+  }
+} = {
+  individual: {
+    title: "1:1 Sessions",
+    icon: <Users className="h-6 w-6" />,
+    sessions: [
+      { duration: "1 hour", price: "35€", popular: false },
+      { duration: "1.5 hours", price: "40€", popular: true },
+    ],
+  },
+  bundles: {
+    title: "Session Bundles",
+    icon: <Sparkles className="h-6 w-6" />,
+    sessions: [
+      { duration: "4 × 1h", price: "135€", popular: false },
+      { duration: "4 × 1.5h", price: "150€", popular: true },
+    ],
+  },
+  group: {
+    title: "Group Sessions",
+    icon: <Users className="h-6 w-6" />,
+    sessions: [
+      { duration: "4-session bundle", price: "55€", popular: true },
+      { duration: "Drop-in (single session)", price: "15€", popular: false },
+    ],
+  },
+  couples: {
+    title: "Couples Breathwork",
+    icon: <Heart className="h-6 w-6" />,
+    sessions: [
+      {
+        duration: "Single 2-hour session",
+        price: "65€ per couple",
+        popular: false,
+      },
+      {
+        duration: "Bundle (4 × 2h)",
+        price: "240€",
+        note: "60€ per session",
+        popular: true,
+      },
+    ],
+  },
+}
+
 export default function OfflinePage() {
   const [isVisible, setIsVisible] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
@@ -12,41 +71,6 @@ export default function OfflinePage() {
   useEffect(() => {
     setIsVisible(true)
   }, [])
-
-  const pricingData = {
-    individual: {
-      title: "1:1 Sessions",
-      icon: <Users className="h-6 w-6" />,
-      sessions: [
-        { duration: "1 hour", price: "35€", popular: false },
-        { duration: "1.5 hours", price: "40€", popular: true },
-      ],
-    },
-    bundles: {
-      title: "Session Bundles",
-      icon: <Sparkles className="h-6 w-6" />,
-      sessions: [
-        { duration: "4 × 1h", price: "135€", popular: false },
-        { duration: "4 × 1.5h", price: "150€", popular: true },
-      ],
-    },
-    group: {
-      title: "Group Sessions",
-      icon: <Users className="h-6 w-6" />,
-      sessions: [
-        { duration: "4-session bundle", price: "55€", popular: true },
-        { duration: "Drop-in (single session)", price: "15€", popular: false },
-      ],
-    },
-    couples: {
-      title: "Couples Breathwork",
-      icon: <Heart className="h-6 w-6" />,
-      sessions: [
-        { duration: "Single 2-hour session", price: "65€ per couple", popular: false },
-        { duration: "Bundle (4 × 2h)", price: "240€", note: "60€ per session", popular: true },
-      ],
-    },
-  }
 
   const handleBooking = (serviceTitle: string) => {
     setSelectedService(serviceTitle)
@@ -59,7 +83,9 @@ export default function OfflinePage() {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-6xl text-center">
           <div
-            className={`transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className={`transform transition-all duration-1000 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             <div className="flex items-center justify-center mb-6">
               <div className="w-8 h-0.5 bg-primary-custom mr-3"></div>
@@ -226,12 +252,11 @@ export default function OfflinePage() {
 
           <div className="text-center mt-16">
             <Button
-  asChild
-  className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
->
-  <a href="/contact">Schedule your Visit</a>
-</Button>
-
+              asChild
+              className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              <a href="/contact">Schedule your Visit</a>
+            </Button>
           </div>
         </div>
       </section>
