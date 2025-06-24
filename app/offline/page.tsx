@@ -4,7 +4,7 @@ import { Heart, Phone, Mail, MapPin, Clock, Sparkles, Users, Star, Leaf } from "
 import { Button } from "@/components/ui/button"
 import ContactForm from "@/components/ContactForm"
 
-// ✅ Define type for session items
+// ✅ Define type for session itemss
 type Session = {
   duration: string
   price: string
