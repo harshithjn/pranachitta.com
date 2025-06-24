@@ -1,37 +1,36 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   try {
-    const { to, subject, html } = await request.json();
-    
-    // In a real application, you would use a service like:
-    // - Resend
-    // - SendGrid
-    // - Nodemailer with SMTP
-    // - AWS SES
-    
-    // For now, we'll simulate sending an email
-    console.log('Email would be sent:', { to, subject, html });
-    
-    // You can replace this with actual email sending logic
-    // Example with Resend:
+    const body = await request.json()
+    const { name, email, phone, message } = body
+
+    // Here you would typically:
+    // 1. Validate the input
+    // 2. Send an email using a service like SendGrid, Resend, or Nodemailer
+    // 3. Store the contact in a database
+
+    // For now, we'll just log the contact and return success
+    console.log("Contact form submission:", { name, email, phone, message })
+
+    // Example email sending (you would need to configure your email service)
     /*
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    await resend.emails.send({
-      from: 'noreply@pranachitta.com',
-      to: to,
-      subject: subject,
-      html: html,
-    });
+    await sendEmail({
+      to: 'info@pranachitta.com',
+      subject: 'New Contact Form Submission',
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `
+    })
     */
-    
-    return NextResponse.json({ success: true, message: 'Email sent successfully' });
+
+    return NextResponse.json({ success: true, message: "Contact form submitted successfully" })
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json(
-      { success: false, message: 'Failed to send email' },
-      { status: 500 }
-    );
+    console.error("Error processing contact form:", error)
+    return NextResponse.json({ success: false, message: "Error processing contact form" }, { status: 500 })
   }
 }

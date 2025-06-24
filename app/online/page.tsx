@@ -1,319 +1,426 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { Play, Download, Users, Wifi, Monitor, Headphones, Plus, Edit, Trash2, Calendar, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+"use client"
+import { useState, useEffect } from "react"
+import {
+  Calendar,
+  Clock,
+  Video,
+  Plus,
+  Edit,
+  Trash2,
+  Wifi,
+  Monitor,
+  Heart,
+  Globe,
+  Users,
+  Download,
+  Headphones,
+  Leaf,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import ContactForm from "@/components/ContactForm"
+import Image from "next/image"
 
-interface OnlineEvent {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  description: string;
-  price: string;
-  type: 'live' | 'recorded';
-  duration: string;
+interface Event {
+  id: string
+  title: string
+  date: string
+  time: string
+  description: string
+  image: string
+  type: "meditation" | "breathwork" | "yoga" | "workshop"
 }
 
-export default function Online() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [events, setEvents] = useState<OnlineEvent[]>([
+export default function OnlinePage() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [events, setEvents] = useState<Event[]>([
     {
-      id: '1',
-      title: 'Live Breathwork Session',
-      date: '2024-02-16',
-      time: '19:00',
-      description: 'Join us for a live guided breathwork session focusing on releasing tension and finding inner calm.',
-      price: '€25',
-      type: 'live',
-      duration: '60 min'
+      id: "1",
+      title: "Morning Meditation & Breathwork",
+      date: "2024-01-15",
+      time: "07:00",
+      description:
+        "Start your day with gentle meditation and conscious breathing practices. Perfect for beginners and experienced practitioners alike.",
+      image: "/placeholder.svg?height=200&width=300",
+      type: "meditation",
     },
     {
-      id: '2',
-      title: 'Meditation & Inner Inquiry',
-      date: '2024-02-18',
-      time: '10:00',
-      description: 'A gentle morning practice combining meditation with inner inquiry techniques.',
-      price: '€20',
-      type: 'live',
-      duration: '45 min'
-    }
-  ]);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [showEventForm, setShowEventForm] = useState(false);
-  const [editingEvent, setEditingEvent] = useState<OnlineEvent | null>(null);
-  const [showBookingForm, setShowBookingForm] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<OnlineEvent | null>(null);
-  const [eventForm, setEventForm] = useState({
-    title: '',
-    date: '',
-    time: '',
-    description: '',
-    price: '',
-    type: 'live' as 'live' | 'recorded',
-    duration: ''
-  });
-  const [bookingForm, setBookingForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+      id: "2",
+      title: "Pranayama Deep Dive",
+      date: "2024-01-18",
+      time: "19:00",
+      description:
+        "An intensive session exploring advanced breathing techniques and their effects on the nervous system.",
+      image: "/placeholder.svg?height=200&width=300",
+      type: "breathwork",
+    },
+    {
+      id: "3",
+      title: "Hatha Yoga Flow",
+      date: "2024-01-20",
+      time: "18:30",
+      description: "Gentle yoga practice focusing on alignment, breath awareness, and mindful movement.",
+      image: "/placeholder.svg?height=200&width=300",
+      type: "yoga",
+    },
+  ])
+
+  const [showEventForm, setShowEventForm] = useState(false)
+  const [showContactForm, setShowContactForm] = useState(false)
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null)
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    date: "",
+    time: "",
+    description: "",
+    image: "/placeholder.svg?height=200&width=300",
+    type: "meditation" as Event["type"],
+  })
 
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
+    setIsVisible(true)
+  }, [])
 
-  const handleAddEvent = () => {
-    const newEvent: OnlineEvent = {
+  const features = [
+    {
+      icon: <Wifi className="h-5 w-5" />,
+      title: "Live Sessions",
+      description: "Join real-time breathwork and meditation sessions with interactive guidance and community support.",
+    },
+    {
+      icon: <Download className="h-5 w-5" />,
+      title: "Recorded Practices",
+      description: "Access our library of recorded sessions, meditations, and healing practices anytime.",
+    },
+    {
+      icon: <Users className="h-5 w-5" />,
+      title: "Global Community",
+      description: "Connect with like-minded souls on their healing journey from around the world.",
+    },
+    {
+      icon: <Monitor className="h-5 w-5" />,
+      title: "HD Streaming",
+      description: "Crystal clear video quality ensures you don't miss any important visual cues or techniques.",
+    },
+    {
+      icon: <Headphones className="h-5 w-5" />,
+      title: "Audio-Only Option",
+      description: "Practice with audio-only sessions when you need to focus purely on breath and internal awareness.",
+    },
+    {
+      icon: <Globe className="h-5 w-5" />,
+      title: "Flexible Access",
+      description: "Join from any device - phone, tablet, or computer - wherever you feel most comfortable.",
+    },
+  ]
+
+  const handleCreateEvent = () => {
+    const event: Event = {
       id: Date.now().toString(),
-      ...eventForm
-    };
-    setEvents([...events, newEvent]);
-    setEventForm({ title: '', date: '', time: '', description: '', price: '', type: 'live', duration: '' });
-    setShowEventForm(false);
-  };
+      ...newEvent,
+    }
+    setEvents([...events, event])
+    setNewEvent({
+      title: "",
+      date: "",
+      time: "",
+      description: "",
+      image: "/placeholder.svg?height=200&width=300",
+      type: "meditation",
+    })
+    setShowEventForm(false)
+  }
 
-  const handleEditEvent = (event: OnlineEvent) => {
-    setEditingEvent(event);
-    setEventForm({
+  const handleEditEvent = (event: Event) => {
+    setEditingEvent(event)
+    setNewEvent({
       title: event.title,
       date: event.date,
       time: event.time,
       description: event.description,
-      price: event.price,
+      image: event.image,
       type: event.type,
-      duration: event.duration
-    });
-    setShowEventForm(true);
-  };
+    })
+    setShowEventForm(true)
+  }
 
   const handleUpdateEvent = () => {
     if (editingEvent) {
-      setEvents(events.map(event => 
-        event.id === editingEvent.id 
-          ? { ...editingEvent, ...eventForm }
-          : event
-      ));
-      setEditingEvent(null);
-      setEventForm({ title: '', date: '', time: '', description: '', price: '', type: 'live', duration: '' });
-      setShowEventForm(false);
+      setEvents(events.map((event) => (event.id === editingEvent.id ? { ...editingEvent, ...newEvent } : event)))
+      setEditingEvent(null)
+      setNewEvent({
+        title: "",
+        date: "",
+        time: "",
+        description: "",
+        image: "/placeholder.svg?height=200&width=300",
+        type: "meditation",
+      })
+      setShowEventForm(false)
     }
-  };
+  }
 
   const handleDeleteEvent = (eventId: string) => {
-    setEvents(events.filter(event => event.id !== eventId));
-  };
+    setEvents(events.filter((event) => event.id !== eventId))
+  }
 
-  const handleBooking = async () => {
-    if (!selectedEvent) return;
-    
-    const emailData = {
-      to: 'hello@pranachitta.com',
-      subject: `Online Session Booking: ${selectedEvent.title}`,
-      html: `
-        <h2>New Online Session Booking</h2>
-        <p><strong>Session:</strong> ${selectedEvent.title}</p>
-        <p><strong>Date:</strong> ${selectedEvent.date} at ${selectedEvent.time}</p>
-        <p><strong>Type:</strong> ${selectedEvent.type}</p>
-        <p><strong>Duration:</strong> ${selectedEvent.duration}</p>
-        <p><strong>Name:</strong> ${bookingForm.name}</p>
-        <p><strong>Email:</strong> ${bookingForm.email}</p>
-        <p><strong>Phone:</strong> ${bookingForm.phone}</p>
-        <p><strong>Message:</strong> ${bookingForm.message}</p>
-      `
-    };
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(emailData)
-      });
-      
-      if (response.ok) {
-        alert('Booking request sent successfully!');
-        setShowBookingForm(false);
-        setBookingForm({ name: '', email: '', phone: '', message: '' });
-        setSelectedEvent(null);
-      }
-    } catch (error) {
-      alert('Error sending booking request. Please try again.');
+  const getTypeColor = (type: Event["type"]) => {
+    switch (type) {
+      case "meditation":
+        return "bg-purple-100 text-purple-800"
+      case "breathwork":
+        return "bg-blue-100 text-blue-800"
+      case "yoga":
+        return "bg-green-100 text-green-800"
+      case "workshop":
+        return "bg-orange-100 text-orange-800"
+      default:
+        return "bg-gray-100 text-gray-800"
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-white pt-24">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className={`text-center space-y-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-6xl text-center">
+          <div
+            className={`transform transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          >
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-8 h-0.5 bg-primary-custom mr-3"></div>
+              <Leaf className="h-6 w-6 text-primary-custom" />
+              <div className="w-8 h-0.5 bg-primary-custom ml-3"></div>
+            </div>
+            <h1 className="font-merienda text-5xl lg:text-7xl font-bold mb-6 text-gray-900">
               Online
-              <span className="text-green-600 block mt-2">Sacred Gatherings</span>
+              <span className="text-primary-custom block mt-2">Sessions</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Connect with our global community from the comfort of your own space. 
-              Experience the same depth of healing and transformation through our online offerings.
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8">
+              Join our virtual community for guided meditation, breathwork, and yoga sessions from the comfort of your
+              home. Everything you need for your healing journey, accessible from anywhere in the world.
             </p>
+
+            {/* Admin Button */}
             
-            {/* Admin Toggle */}
-      
-          
           </div>
         </div>
       </section>
 
-      {/* Online Events Section */}
-      <section className="py-20 px-4 bg-white">
+      {/* Platform Features */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex justify-between items-center mb-16">
-            <div className="text-center flex-1">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Upcoming Online Sessions</h2>
-              <p className="text-xl text-gray-600">Join us from anywhere in the world</p>
-            </div>
-            {isAdmin && (
-              <Button 
-                onClick={() => setShowEventForm(true)}
-                className="bg-green-600 hover:bg-green-700"
-              >
-                <Plus className="mr-2 h-4 w-4" />
-                Add Session
-              </Button>
-            )}
+          <div className="text-center mb-16">
+            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Our Online Platform</h2>
+            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover our digital sanctuary where distance dissolves and hearts connect
+            </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event, index) => (
-              <Card key={event.id} className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 150}ms` }}>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold text-gray-800 flex-1">{event.title}</h3>
-                    <div className="flex flex-col items-end space-y-1">
-                      <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">
-                        {event.price}
-                      </span>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        event.type === 'live' 
-                          ? 'bg-red-100 text-red-600' 
-                          : 'bg-blue-100 text-blue-600'
-                      }`}>
-                        {event.type === 'live' ? 'LIVE' : 'RECORDED'}
-                      </span>
-                    </div>
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-primary-custom/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="text-primary-custom">{feature.icon}</div>
                   </div>
-                  <div className="flex items-center mb-2 text-gray-600">
+                  <div className="flex-1">
+                    <h3 className="font-merienda text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Sessions */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Upcoming Sessions</h2>
+            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600">Join our live online sessions and connect with our global community</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events.map((event) => (
+              <Card
+                key={event.id}
+                className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              >
+                <div className="relative">
+                  <Image
+                    src={event.image || "/placeholder.svg"}
+                    alt={event.title}
+                    width={300}
+                    height={200}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getTypeColor(event.type)}`}>
+                      {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4 flex space-x-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="bg-white/90 hover:bg-white"
+                      onClick={() => handleEditEvent(event)}
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="bg-white/90 hover:bg-white text-red-600 hover:text-red-700"
+                      onClick={() => handleDeleteEvent(event.id)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-3">
                     <Calendar className="h-4 w-4 mr-2" />
                     <span>{new Date(event.date).toLocaleDateString()}</span>
+                    <Clock className="h-4 w-4 ml-4 mr-2" />
+                    <span>{event.time}</span>
                   </div>
-                  <div className="flex items-center mb-2 text-gray-600">
-                    <Clock className="h-4 w-4 mr-2" />
-                    <span>{event.time} ({event.duration})</span>
-                  </div>
+                  <h3 className="font-merienda text-xl font-bold text-gray-800 mb-3">{event.title}</h3>
                   <p className="text-gray-600 leading-relaxed mb-6">{event.description}</p>
-                  
-                  <div className="space-y-2">
-                    <Button 
-                      className="w-full bg-green-600 hover:bg-green-700"
-                      onClick={() => {
-                        setSelectedEvent(event);
-                        setShowBookingForm(true);
-                      }}
-                    >
-                      {event.type === 'live' ? 'Join Live Session' : 'Access Recording'}
-                    </Button>
-                    
-                    {isAdmin && (
-                      <div className="flex gap-2">
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          className="flex-1"
-                          onClick={() => handleEditEvent(event)}
-                        >
-                          <Edit className="h-4 w-4 mr-1" />
-                          Edit
-                        </Button>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          className="flex-1 text-red-600 border-red-600 hover:bg-red-50"
-                          onClick={() => handleDeleteEvent(event.id)}
-                        >
-                          <Trash2 className="h-4 w-4 mr-1" />
-                          Delete
-                        </Button>
-                      </div>
-                    )}
-                  </div>
+                  <Button
+                    onClick={() => {
+                      setSelectedEvent(event)
+                      setShowContactForm(true)
+                    }}
+                    className="w-full bg-primary-custom hover:bg-primary-dark text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Video className="mr-2 h-4 w-4" />
+                    Join Session
+                  </Button>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Coming Soon Section */}
+      <section className="py-20 px-4 bg-primary-custom">
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6">
+            <Heart className="h-8 w-8 text-white" />
+          </div>
+          <h2 className="font-merienda text-4xl font-bold text-white mb-4">More Sessions Coming Soon</h2>
+          <div className="w-16 h-1 bg-white/50 mx-auto mb-8"></div>
+          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+            We're preparing beautiful online experiences for you. Stay tuned for our upcoming virtual sessions and
+            digital offerings that will deepen your practice and connection.
+          </p>
+          <Button
+            onClick={() => setShowContactForm(true)}
+            className="bg-white text-primary-custom hover:bg-white/90 px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
+            Stay Connected
+          </Button>
         </div>
       </section>
 
       {/* Event Form Dialog */}
       <Dialog open={showEventForm} onOpenChange={setShowEventForm}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>{editingEvent ? 'Edit Session' : 'Add New Session'}</DialogTitle>
+            <DialogTitle className="font-merienda text-primary-custom">
+              {editingEvent ? "Edit Session" : "Create New Session"}
+            </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <Input
-              placeholder="Session Title"
-              value={eventForm.title}
-              onChange={(e) => setEventForm({...eventForm, title: e.target.value})}
-            />
-            <Input
-              type="date"
-              value={eventForm.date}
-              onChange={(e) => setEventForm({...eventForm, date: e.target.value})}
-            />
-            <Input
-              type="time"
-              value={eventForm.time}
-              onChange={(e) => setEventForm({...eventForm, time: e.target.value})}
-            />
-            <Input
-              placeholder="Duration (e.g., 60 min)"
-              value={eventForm.duration}
-              onChange={(e) => setEventForm({...eventForm, duration: e.target.value})}
-            />
-            <select
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-              value={eventForm.type}
-              onChange={(e) => setEventForm({...eventForm, type: e.target.value as 'live' | 'recorded'})}
-            >
-              <option value="live">Live Session</option>
-              <option value="recorded">Recorded Session</option>
-            </select>
-            <Input
-              placeholder="Price (e.g., €25)"
-              value={eventForm.price}
-              onChange={(e) => setEventForm({...eventForm, price: e.target.value})}
-            />
-            <textarea
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none h-24"
-              placeholder="Session Description"
-              value={eventForm.description}
-              onChange={(e) => setEventForm({...eventForm, description: e.target.value})}
-            />
-            <div className="flex gap-2">
-              <Button 
-                onClick={editingEvent ? handleUpdateEvent : handleAddEvent}
-                className="flex-1 bg-green-600 hover:bg-green-700"
+            <div>
+              <Label htmlFor="title">Session Title</Label>
+              <Input
+                id="title"
+                value={newEvent.title}
+                onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+                placeholder="Enter session title"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="date">Date</Label>
+                <Input
+                  id="date"
+                  type="date"
+                  value={newEvent.date}
+                  onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
+                />
+              </div>
+              <div>
+                <Label htmlFor="time">Time</Label>
+                <Input
+                  id="time"
+                  type="time"
+                  value={newEvent.time}
+                  onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+                />
+              </div>
+            </div>
+            <div>
+              <Label htmlFor="type">Session Type</Label>
+              <select
+                id="type"
+                value={newEvent.type}
+                onChange={(e) => setNewEvent({ ...newEvent, type: e.target.value as Event["type"] })}
+                className="w-full p-2 border border-gray-300 rounded-md"
               >
-                {editingEvent ? 'Update Session' : 'Add Session'}
+                <option value="meditation">Meditation</option>
+                <option value="breathwork">Breathwork</option>
+                <option value="yoga">Yoga</option>
+                <option value="workshop">Workshop</option>
+              </select>
+            </div>
+            <div>
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                value={newEvent.description}
+                onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+                placeholder="Enter session description"
+                rows={4}
+              />
+            </div>
+            <div className="flex space-x-4">
+              <Button
+                onClick={editingEvent ? handleUpdateEvent : handleCreateEvent}
+                className="flex-1 bg-primary-custom hover:bg-primary-dark"
+              >
+                {editingEvent ? "Update Session" : "Create Session"}
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => {
-                  setShowEventForm(false);
-                  setEditingEvent(null);
-                  setEventForm({ title: '', date: '', time: '', description: '', price: '', type: 'live', duration: '' });
+                  setShowEventForm(false)
+                  setEditingEvent(null)
+                  setNewEvent({
+                    title: "",
+                    date: "",
+                    time: "",
+                    description: "",
+                    image: "/placeholder.svg?height=200&width=300",
+                    type: "meditation",
+                  })
                 }}
               >
                 Cancel
@@ -323,113 +430,14 @@ export default function Online() {
         </DialogContent>
       </Dialog>
 
-      {/* Booking Form Dialog */}
-      <Dialog open={showBookingForm} onOpenChange={setShowBookingForm}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Join: {selectedEvent?.title}</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <Input
-              placeholder="Your Name"
-              value={bookingForm.name}
-              onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
-            />
-            <Input
-              type="email"
-              placeholder="Your Email"
-              value={bookingForm.email}
-              onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
-            />
-            <Input
-              type="tel"
-              placeholder="Your Phone (optional)"
-              value={bookingForm.phone}
-              onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
-            />
-            <textarea
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none resize-none h-24"
-              placeholder="Any questions or special requirements?"
-              value={bookingForm.message}
-              onChange={(e) => setBookingForm({...bookingForm, message: e.target.value})}
-            />
-            <div className="flex gap-2">
-              <Button 
-                onClick={handleBooking}
-                className="flex-1 bg-green-600 hover:bg-green-700"
-              >
-                Send Registration
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => {
-                  setShowBookingForm(false);
-                  setSelectedEvent(null);
-                  setBookingForm({ name: '', email: '', phone: '', message: '' });
-                }}
-              >
-                Cancel
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Platform Features */}
-      <section className="py-20 px-4 bg-gradient-to-r from-green-50 to-emerald-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Online Platform</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need for your healing journey, accessible from anywhere
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Wifi className="h-12 w-12 text-green-600" />,
-                title: "Live Sessions",
-                description: "Join real-time breathwork and meditation sessions with interactive guidance and community support."
-              },
-              {
-                icon: <Download className="h-12 w-12 text-green-600" />,
-                title: "Recorded Practices",
-                description: "Access our library of recorded sessions, meditations, and healing practices anytime."
-              },
-              {
-                icon: <Users className="h-12 w-12 text-green-600" />,
-                title: "Community Support",
-                description: "Connect with like-minded individuals on their healing journey through our online community."
-              },
-              {
-                icon: <Monitor className="h-12 w-12 text-green-600" />,
-                title: "HD Streaming",
-                description: "Crystal clear video quality ensures you don't miss any important visual cues or techniques."
-              },
-              {
-                icon: <Headphones className="h-12 w-12 text-green-600" />,
-                title: "Audio-Only Option",
-                description: "Practice with audio-only sessions when you need to focus purely on breath and internal awareness."
-              },
-              {
-                icon: <Play className="h-12 w-12 text-green-600" />,
-                title: "Flexible Access",
-                description: "Join from any device - phone, tablet, or computer - wherever you feel most comfortable."
-              }
-            ].map((feature, index) => (
-              <Card key={index} className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 150}ms` }}>
-                <CardContent className="p-8 text-center">
-                  <div className="mb-6 flex justify-center">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ContactForm
+        isOpen={showContactForm}
+        onClose={() => {
+          setShowContactForm(false)
+          setSelectedEvent(null)
+        }}
+        title={selectedEvent ? `Join: ${selectedEvent.title}` : "Stay Connected"}
+      />
     </div>
-  );
+  )
 }

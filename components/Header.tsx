@@ -1,118 +1,72 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X, Leaf } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import { Menu, X, Leaf } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Offline', href: '/offline' },
-    { name: 'Online', href: '/online' },
-  ];
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "Online Sessions", href: "/online" },
+    { name: "In-Person Events", href: "/offline" },
+    { name: "Contact", href: "/contact" },
+  ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
-        : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="p-0">
-  <img src="https://res.cloudinary.com/dtzqrfg6q/image/upload/v1750674115/Transparent-01_hpxbqo.png" alt="Icon" className="h-20 w-20" />
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-white  flex items-center justify-center">
+  <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" alt="Icon" className="h-15 w-15" />
 </div>
 
-
-            <div className="flex flex-col">
-              <span className="text-lg font-bold text-gray-800 group-hover:text-green-600 transition-colors leading-tight">
-                Prana Chitta
-              </span>
-              <span className="text-xs text-gray-600 italic leading-tight">
-                Ashram
-              </span>
+            <div>
+              <h1 className="font-merienda text-xl font-bold text-gray-800">Prāṇa Chitta</h1>
+              <p className="font-merienda text-sm text-primary-custom">Ashram</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 relative group"
+                className="text-gray-700 hover:text-primary-custom font-medium transition-colors duration-200"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </nav>
-
-          {/* CTA Button */}
-         <div className="hidden md:block">
-  <Link href="/contact">
-    <Button className="bg-green-600 hover:bg-green-700 text-white px-6">
-      Contact Us
-    </Button>
-  </Link>
-</div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
-            )}
-          </button>
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ${
-        isMobileMenuOpen 
-          ? 'max-h-64 opacity-100' 
-          : 'max-h-0 opacity-0 overflow-hidden'
-      }`}>
-        <div className="bg-white/95 backdrop-blur-sm border-t border-gray-200">
-          <nav className="container mx-auto px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-           <div className="hidden md:block">
-  <Link href="/contact">
-    <Button className="bg-green-600 hover:bg-green-700 text-white px-6">
-      Contact Us
-    </Button>
-  </Link>
-</div>
-          </nav>
-        </div>
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-gray-100">
+            <nav className="flex flex-col space-y-4">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-primary-custom font-medium transition-colors duration-200 px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
-  );
+  )
 }
