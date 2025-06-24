@@ -206,7 +206,7 @@ export default function OfflinePage() {
             ))}
           </div>
 
-          {/* Financial Support */}
+          {/* Financial Supports */}
           <div className="text-center">
             <div className="max-w-3xl mx-auto bg-white rounded-2xl p-10 shadow-lg border-l-4 border-primary-custom">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full mb-6">
