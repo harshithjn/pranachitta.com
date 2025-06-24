@@ -41,37 +41,46 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="font-merienda text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-              <form className="space-y-6">
+              <form 
+                action="https://getform.io/f/bjjoqkkb"
+                method="POST"
+                className="space-y-6"
+              >
+                <input type="hidden" name="_gotcha" style={{ display: 'none' }} />
+                {/* Optional redirect */}
+                {/* <input type="hidden" name="_redirect" value="https://yourdomain.com/thank-you" /> */}
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <Input placeholder="Your first name" className="rounded-lg" />
+                    <Input name="first_name" placeholder="Your first name" className="rounded-lg" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <Input placeholder="Your last name" className="rounded-lg" />
+                    <Input name="last_name" placeholder="Your last name" className="rounded-lg" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <Input type="email" placeholder="your.email@example.com" className="rounded-lg" />
+                  <Input name="email" type="email" placeholder="your.email@example.com" className="rounded-lg" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                  <Input type="tel" placeholder="+94 XXX XXX XXX" className="rounded-lg" />
+                  <Input name="phone" type="tel" placeholder="+94 XXX XXX XXX" className="rounded-lg" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                  <Input placeholder="How can we help you?" className="rounded-lg" />
+                  <Input name="subject" placeholder="How can we help you?" className="rounded-lg" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea 
+                    name="message"
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-custom focus:border-primary-custom outline-none resize-none h-32"
                     placeholder="Tell us about your healing goals or any questions you have..."
                   ></textarea>
                 </div>
-                <Button className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <Button type="submit" className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                   <Send className="mr-2 h-5 w-5" />
                   Send Message
                 </Button>
@@ -109,7 +118,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Email</h3>
-                      <p className="text-gray-600">info@pranachitta.com</p>
+                      <p className="text-gray-600">pranachitta@gmail.com</p>
                       <p className="text-sm text-gray-500">We respond within 24 hours</p>
                     </div>
                   </div>

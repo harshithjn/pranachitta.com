@@ -1,8 +1,10 @@
 "use client"
 import { useState, useEffect } from "react"
+import type React from "react"
+
 import { Heart, Phone, Mail, MapPin, Clock, Sparkles, Users, Star, Leaf } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ContactForm from "@/components/ContactForm"
+// import ContactForm from "@/components/ContactForm" // REMOVED
 
 // ✅ Define type for session itemss
 type Session = {
@@ -16,7 +18,7 @@ type Session = {
 const pricingData: {
   [key: string]: {
     title: string
-    icon: JSX.Element
+    icon: React.ReactNode
     sessions: Session[]
   }
 } = {
@@ -65,17 +67,17 @@ const pricingData: {
 
 export default function OfflinePage() {
   const [isVisible, setIsVisible] = useState(false)
-  const [showContactForm, setShowContactForm] = useState(false)
-  const [selectedService, setSelectedService] = useState<string | null>(null)
+  // const [showContactForm, setShowContactForm] = useState(false) // REMOVED
+  // const [selectedService, setSelectedService] = useState<string | null>(null) // REMOVED
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
 
-  const handleBooking = (serviceTitle: string) => {
-    setSelectedService(serviceTitle)
-    setShowContactForm(true)
-  }
+  // const handleBooking = (serviceTitle: string) => { // REMOVED
+  //   setSelectedService(serviceTitle) // REMOVED
+  //   setShowContactForm(true) // REMOVED
+  // } // REMOVED
 
   return (
     <div className="min-h-screen bg-white pt-24">
@@ -165,12 +167,41 @@ export default function OfflinePage() {
                   ))}
                 </div>
 
-                <Button
-                  onClick={() => handleBooking(category.title)}
-                  className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Book {category.title}
-                </Button>
+                {key === "individual" && (
+                  <Button
+                    asChild
+                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScz1l7-67mF_DUuw3mYaZTOZ0KWTGGukT0ua2NoRDdsomeUng/viewform?usp=sharing&ouid=113782035860637259457">Book 1:1 Sessions</a>
+                  </Button>
+                )}
+
+                {key === "bundles" && (
+                  <Button
+                    asChild
+                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjiNyqResKp-3Lp_hiRktlwswHbjLpq9VyznsJF9UnbU182A/viewform?usp=sharing&ouid=113782035860637259457">Book Session Bundles</a>
+                  </Button>
+                )}
+
+                {key === "group" && (
+                  <Button
+                    asChild
+                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <a href="https://forms.gle/gxv9CAUurhRTiq3R8">Book Group Sessions</a>
+                  </Button>
+                )}
+
+                {key === "couples" && (
+                  <Button
+                    asChild
+                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <a href="https://forms.gle/dLRtSM6JY3a3LiWz6">Book Couples Breathwork</a>
+                  </Button>
+                )}
               </div>
             ))}
           </div>
@@ -190,14 +221,13 @@ export default function OfflinePage() {
               </p>
 
               <Button
-                onClick={() => {
-                  setSelectedService("Financial Support")
-                  setShowContactForm(true)
-                }}
+                asChild
                 className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                <Mail className="h-4 w-4 mr-2" />
-                Get in Touch
+                <a href="/contact">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Get in Touch
+                </a>
               </Button>
             </div>
           </div>
@@ -261,14 +291,14 @@ export default function OfflinePage() {
         </div>
       </section>
 
-      <ContactForm
-        isOpen={showContactForm}
-        onClose={() => {
-          setShowContactForm(false)
-          setSelectedService(null)
-        }}
-        title={selectedService ? `Book: ${selectedService}` : "Contact Us"}
-      />
+      {/* <ContactForm // REMOVED
+        isOpen={showContactForm} // REMOVED
+        onClose={() => { // REMOVED
+          setShowContactForm(false) // REMOVED
+          setSelectedService(null) // REMOVED
+        }} // REMOVED
+        title={selectedService ? `Book: ${selectedService}` : "Contact Us"} // REMOVED
+      /> */}
     </div>
   )
 }

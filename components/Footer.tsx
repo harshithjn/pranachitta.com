@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-custom" />
-                <span className="text-gray-300">info@pranachitta.com</span>
+                <span className="text-gray-300">pranachitta@gmail.com</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-custom" />
