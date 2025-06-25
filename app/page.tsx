@@ -77,8 +77,8 @@ export default function Home() {
                 </div>
 
                 <h1 className="font-merienda text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
-                  PRāṇA CHITTA
-                  <span className="block text-primary-custom mt-2">ASHRAM</span>
+                  Paāṇa Chitta
+                  <span className="block text-primary-custom mt-2">Ashram</span>
                 </h1>
 
                 <p className="font-merienda text-xl lg:text-2xl text-primary-custom font-medium italic mb-4">
@@ -142,7 +142,7 @@ export default function Home() {
                   Our mission is to support individuals in awakening their life energy, releasing old patterns and
                   softening into the wholeness of the present moment - with{" "}
                   <em className="text-primary-custom font-semibold">prāṇa</em>, the vital force carried by the breath,
-                  as the bridge between body and <em className="text-primary-custom font-semibold">citta</em>, the
+                  as the bridge between body and <em className="text-primary-custom font-semibold">chitta</em>, the
                   heart-mind and field of awareness.
                 </p>
 
@@ -164,56 +164,68 @@ export default function Home() {
 
       {/* Scattered Images Section */}
       <section className="py-16 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div className="md:col-span-2">
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761234/Screenshot_2025-06-24_at_16.01.37_knvoov.png"
-                alt="Yoga practice"
-                width={500}
-                height={300}
-                className="w-full h-64 object-cover rounded-2xl shadow-lg"
-              />
-            </div>
-            <div>
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.03_nppwkl.png"
-                alt="Meditation"
-                width={300}
-                height={300}
-                className="w-full h-64 object-cover rounded-2xl shadow-lg"
-              />
-            </div>
-            <div className="lg:row-span-2">
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761231/Screenshot_2025-06-24_at_16.01.00_zsybnn.png"
-                alt="Breathwork session"
-                width={300}
-                height={500}
-                className="w-full h-full object-cover rounded-2xl shadow-lg"
-              />
-            </div>
-            <div>
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.16_mdm866.png"
-                alt="Nature meditation"
-                width={300}
-                height={300}
-                className="w-full h-64 object-cover rounded-2xl shadow-lg"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.55_hvt2qz.png"
-                alt="Group session"
-                width={500}
-                height={300}
-                className="w-full h-64 object-cover rounded-2xl shadow-lg"
-              />
-            </div>
+      <div className="container mx-auto max-w-7xl">
+        {/* Mobile: Single Image */}
+        <div className="block md:hidden">
+          <Image
+            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-02_etyuoy.png"
+            alt="Mobile yoga image"
+            width={600}
+            height={400}
+            className="w-full h-80 object-cover rounded-2xl shadow-lg"
+          />
+        </div>
+
+        {/* Desktop: Grid Layout */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="md:col-span-2">
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761234/Screenshot_2025-06-24_at_16.01.37_knvoov.png"
+              alt="Yoga practice"
+              width={500}
+              height={300}
+              className="w-full h-64 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+          <div>
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.03_nppwkl.png"
+              alt="Meditation"
+              width={300}
+              height={300}
+              className="w-full h-64 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+          <div className="lg:row-span-2">
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761231/Screenshot_2025-06-24_at_16.01.00_zsybnn.png"
+              alt="Breathwork session"
+              width={300}
+              height={500}
+              className="w-full h-full object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+          <div>
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.16_mdm866.png"
+              alt="Nature meditation"
+              width={300}
+              height={300}
+              className="w-full h-64 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.55_hvt2qz.png"
+              alt="Group session"
+              width={500}
+              height={300}
+              className="w-full h-64 object-cover rounded-2xl shadow-lg"
+            />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* What We Offer - Minimal */}
       <section id="offerings" className="py-20 px-4 bg-white">
@@ -268,10 +280,13 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16 max-w-4xl mx-auto">
-            <p className="font-merienda text-2xl text-primary-custom font-medium italic leading-relaxed">
-              We create simple shared spaces to feel what it means to be alive, together.
-            </p>
-          </div>
+  <div className="bg-primary-custom/5 rounded-2xl p-6 border-l-4 border-primary-custom">
+    <p className="font-merienda text-xl text-primary-custom font-medium italic leading-relaxed">
+      We create simple shared spaces to feel what it means to be alive, together.
+    </p>
+  </div>
+</div>
+
         </div>
       </section>
 
@@ -301,10 +316,11 @@ export default function Home() {
                   of collective practice from anywhere in the world.
                 </p>
                 <Link href="/online">
-                  <Button className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                    <Play className="mr-2 h-5 w-5" />
-                    Explore Online Sessions
-                  </Button>
+                  <Button className="mt-6 bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+  <Play className="mr-2 h-5 w-5" />
+  Explore Online Sessions
+</Button>
+
                 </Link>
               </div>
               <div>
@@ -341,7 +357,7 @@ export default function Home() {
                   Experience deep healing in a supportive community environment.
                 </p>
                 <Link href="/offline">
-                  <Button className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  <Button className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-6">
                     <Calendar className="mr-2 h-5 w-5" />
                     View In-Person Events
                   </Button>
@@ -408,60 +424,74 @@ export default function Home() {
 
       {/* About Teacher Section with Image */}
       <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div>
-                <div className="flex items-center mb-6">
-                  <User className="h-8 w-8 text-primary-custom mr-3" />
-                  <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Gitana</h2>
-                </div>
-                <div className="w-16 h-1 bg-primary-custom mb-8"></div>
-              </div>
-
-              <div className="space-y-6 text-gray-700 leading-relaxed">
-                <p>
-                  Qualified in Hatha, Ashtanga, Vinyasa, and Kriya Yoga, with additional certification in pre- and
-                  postnatal yoga informed by Ayurvedic principles.
-                </p>
-                <p>
-                  Specialised in conscious connected breathwork, advanced pranayama, and subtle energy work with a focus
-                  on the chakra system.
-                </p>
-                <p>
-                  Facilitator of active and passive meditation, with a passion for Osho Meditations, Sufism, Bhakti Yoga
-                  and mantra chanting.
-                </p>
-                <p>
-                  Additionally trained in craniosacral therapy and integrative bodywork. All sessions supported by
-                  trauma-informed, counseling-based guidance focused on nervous system regulation and emotional
-                  integration.
-                </p>
-              </div>
-
-              <Button
-  asChild
-  className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
->
-  <a href="/contact">Contact to Learn More</a>
-</Button>
-
-            </div>
-
-            <div className="flex justify-center">
-              <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl">
-                <Image
-                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761235/Screenshot_2025-06-24_at_16.00.32_gw9vbg.png"
-                  alt="Gitana - Teacher and Founder"
-                  width={320}
-                  height={320}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+  <div className="container mx-auto max-w-6xl">
+    <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-16 items-center">
+      
+      {/* TEXT SECTION */}
+      <div className="space-y-8">
+        {/* Title */}
+        <div>
+          <div className="flex items-center mb-6">
+            <User className="h-8 w-8 text-primary-custom mr-3" />
+            <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Gitana</h2>
           </div>
+          <div className="w-16 h-1 bg-primary-custom mb-8"></div>
         </div>
-      </section>
+
+        {/* Description */}
+        <div className="space-y-6 text-gray-700 leading-relaxed">
+          <p>
+            Qualified in Hatha, Ashtanga, Vinyasa, and Kriya Yoga, with additional certification in pre- and
+            postnatal yoga informed by Ayurvedic principles.
+          </p>
+          <p>
+            Specialised in conscious connected breathwork, advanced pranayama, and subtle energy work with a focus
+            on the chakra system.
+          </p>
+          <p>
+            Facilitator of active and passive meditation, with a passion for Osho Meditations, Sufism, Bhakti Yoga
+            and mantra chanting.
+          </p>
+          <p>
+            Additionally trained in craniosacral therapy and integrative bodywork. All sessions supported by
+            trauma-informed, counseling-based guidance focused on nervous system regulation and emotional
+            integration.
+          </p>
+        </div>
+
+        {/* Quote */}
+        <div className="bg-primary-custom/5 rounded-2xl p-6 border-l-4 border-primary-custom">
+          <p className="font-merienda text-xl text-primary-custom font-semibold italic">
+            "My work is to create spaces where people can remember their own wholeness — where
+            breath becomes a bridge back to the wisdom that lives within."
+          </p>
+        </div>
+
+        {/* Button */}
+        <Button
+          asChild
+          className="mt-6 bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+        >
+          <a href="/contact">Contact to Learn More</a>
+        </Button>
+      </div>
+
+      {/* IMAGE SECTION */}
+      <div className="flex justify-center mb-12 lg:mb-0">
+        <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl">
+          <Image
+            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761235/Screenshot_2025-06-24_at_16.00.32_gw9vbg.png"
+            alt="Gitana - Teacher and Founder"
+            width={320}
+            height={320}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* The Ashram */}
       <section className="py-20 px-4 bg-white">
@@ -523,77 +553,53 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <Quote className="h-8 w-8 text-primary-custom mr-3" />
-              <h2 className="font-merienda text-4xl font-bold text-gray-900">Reviews</h2>
-            </div>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 leading-relaxed">Voices from Our Community</p>
+      <div className="overflow-x-auto px-2">
+  <div
+    ref={reviewsRef}
+    className="flex space-x-8 pb-4"
+    style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+  >
+    {reviews.map((review, index) => (
+      <div
+        key={index}
+        className="flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+        style={{ scrollSnapAlign: "start" }}
+      >
+        <div className="flex items-center mb-6">
+          <div className="w-12 h-12 bg-primary-custom rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+            {review.image}
           </div>
-
-          <div className="relative">
-            <div
-              ref={reviewsRef}
-              className="flex overflow-x-hidden space-x-8 pb-4"
-              style={{ scrollSnapType: "x mandatory" }}
-            >
-              {reviews.map((review, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-96 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ scrollSnapAlign: "start" }}
-                >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-primary-custom rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
-                      {review.image}
-                    </div>
-                    <h4 className="font-bold text-gray-900 text-lg">-{review.name}</h4>
-                  </div>
-                  <p className="text-gray-600 italic leading-relaxed">{review.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center mt-12 space-x-3">
-              {reviews.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentReview(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentReview === index ? "bg-primary-custom scale-125" : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+          <h4 className="font-bold text-gray-900 text-lg">-{review.name}</h4>
         </div>
-      </section>
+        <p className="text-gray-600 italic leading-relaxed">{review.text}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Newsletter Section */}
       <section id="contact" className="py-20 px-4 bg-primary-custom text-white">
-        <div className="container mx-auto max-w-4xl text-center">
-          <Heart className="h-12 w-12 mx-auto mb-6 text-white/80" />
-          <h2 className="font-merienda text-4xl font-bold mb-6">Begin Your Journey Within</h2>
-          <div className="w-16 h-1 bg-white/50 mx-auto mb-8"></div>
-          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join our community and receive gentle guidance, breathwork practices, and inspiration for your inner
-            journey.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-full px-6 py-3 backdrop-blur-sm focus:bg-white/30 transition-all"
-            />
-            <Button className="bg-white text-primary-custom hover:bg-white/90 px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-              Subscribe
-            </Button>
-          </div>
-        </div>
-      </section>
+  <div className="container mx-auto max-w-4xl text-center">
+    <Heart className="h-12 w-12 mx-auto mb-6 text-white/80" />
+    <h2 className="font-merienda text-4xl font-bold mb-6">Begin Your Journey Within</h2>
+    <div className="w-16 h-1 bg-white/50 mx-auto mb-8"></div>
+    <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+      Join our community and receive gentle guidance, breathwork practices, and inspiration for your inner
+      journey.
+    </p>
+    
+    <div>
+      <Button
+        asChild
+        className="bg-white text-primary-custom hover:bg-white/90 px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+      >
+        <a href="/contact">Contact Us</a>
+      </Button>
+    </div>
+  </div>
+</section>
+
 
       <ContactForm
         isOpen={showContactForm}

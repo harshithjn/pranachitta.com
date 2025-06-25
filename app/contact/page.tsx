@@ -195,10 +195,7 @@ export default function Contact() {
       <section className="py-20 px-4 bg-primary-custom">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="font-merienda text-4xl font-bold text-white mb-4">Ready to Begin Your Journey?</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Take the first step towards transformation. Book your initial consultation and discover how breathwork can change your life.
-          </p>
-          <Button size="lg" className="bg-white text-primary-custom hover:bg-white/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          <Button size="lg" className="bg-white text-primary-custom hover:bg-white/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-6">
             Schedule Free Consultation
           </Button>
         </div>
