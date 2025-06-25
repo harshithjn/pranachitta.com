@@ -60,14 +60,14 @@ export default function EntryAnimation({ onComplete }: EntryAnimationProps) {
               stage >= 2 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            PRāṇA CHITTA
+            Prāṇa Chitta
           </h1>
           <h2
             className={`font-merienda text-2xl lg:text-3xl font-bold text-primary-custom transition-all duration-1000 delay-700 ${
               stage >= 2 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            ASHRAM
+            Ashram
           </h2>
           <p
             className={`font-merienda text-lg lg:text-xl text-primary-custom font-medium italic transition-all duration-1000 delay-900 ${
