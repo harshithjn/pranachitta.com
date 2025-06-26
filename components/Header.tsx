@@ -11,6 +11,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Online Sessions", href: "/online" },
     { name: "In-Person Events", href: "/offline" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
   ]
 
@@ -21,12 +22,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-white  flex items-center justify-center">
-  <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" alt="Icon" className="h-15 w-15" />
+  <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" alt="Icon" className="h-25 w-25" />
 </div>
 
             <div>
-              <h1 className="font-merienda text-xl font-bold text-gray-800">Prāṇa Chitta</h1>
-              <p className="font-merienda text-sm text-primary-custom">Ashram</p>
+              <h1 className="font-merienda text-xl font-bold text-gray-800">Prana Chitta</h1>
             </div>
           </Link>
 

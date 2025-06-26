@@ -13,7 +13,7 @@ export default function Footer() {
   <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" alt="Icon" className="h-15 w-15" />
 </div>
               <div>
-                <h3 className="font-merienda text-xl font-bold">Prāṇa Chitta Ashram</h3>
+                <h3 className="font-merienda text-xl font-bold">Prana Chitta Ashram</h3>
                 <p className="font-merienda text-sm text-primary-custom/80">Breathing into loving awareness</p>
               </div>
             </div>
@@ -64,14 +64,14 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-custom" />
-                <span className="text-gray-300">+94 XXX XXX XXX</span>
+                <span className="text-gray-300">+94 76 200 2926</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400">© 2025 Prāṇa Chitta Ashram. All rights reserved.</p>
+          <p className="text-gray-400">© 2025 Prana Chitta Ashram. All rights reserved.</p>
         </div>
       </div>
     </footer>

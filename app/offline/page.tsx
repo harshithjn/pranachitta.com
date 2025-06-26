@@ -1,304 +1,286 @@
 "use client"
-import { useState, useEffect } from "react"
-import type React from "react"
 
-import { Heart, Phone, Mail, MapPin, Clock, Sparkles, Users, Star, Leaf } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Calendar, Clock, MapPin, Leaf, FileText, ExternalLink, Eye } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-// import ContactForm from "@/components/ContactForm" // REMOVED
+import { Card, CardContent } from "@/components/ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { useRouter } from 'next/navigation'
 
-// ✅ Define type for session itemss
-type Session = {
-  duration: string
-  price: string
-  popular: boolean
-  note?: string
+interface Event {
+  id: string
+  title: string
+  date: string
+  time: string
+  description: string
+  type: string
+  location: string
+  attachment?: string
 }
 
-// ✅ Type for pricing data
-const pricingData: {
-  [key: string]: {
-    title: string
-    icon: React.ReactNode
-    sessions: Session[]
-  }
-} = {
-  individual: {
-    title: "1:1 Sessions",
-    icon: <Users className="h-6 w-6" />,
-    sessions: [
-      { duration: "1 hour", price: "35€", popular: false },
-      { duration: "1.5 hours", price: "40€", popular: true },
-    ],
-  },
-  bundles: {
-    title: "Session Bundles",
-    icon: <Sparkles className="h-6 w-6" />,
-    sessions: [
-      { duration: "4 × 1h", price: "135€", popular: false },
-      { duration: "4 × 1.5h", price: "150€", popular: true },
-    ],
-  },
-  group: {
-    title: "Group Sessions",
-    icon: <Users className="h-6 w-6" />,
-    sessions: [
-      { duration: "4-session bundle", price: "55€", popular: true },
-      { duration: "Drop-in (single session)", price: "15€", popular: false },
-    ],
-  },
-  couples: {
-    title: "Couples Breathwork",
-    icon: <Heart className="h-6 w-6" />,
-    sessions: [
-      {
-        duration: "Single 2-hour session",
-        price: "65€ per couple",
-        popular: false,
-      },
-      {
-        duration: "Bundle (4 × 2h)",
-        price: "240€",
-        note: "60€ per session",
-        popular: true,
-      },
-    ],
-  },
+interface SheetEvent {
+  Title?: string
+  Date?: string
+  Time?: string
+  Description?: string
+  Type?: string
+  Location?: string
+  Attachment?: string
+  [key: string]: any // Allow for flexible column names
 }
 
 export default function OfflinePage() {
-  const [isVisible, setIsVisible] = useState(false)
-  // const [showContactForm, setShowContactForm] = useState(false) // REMOVED
-  // const [selectedService, setSelectedService] = useState<string | null>(null) // REMOVED
+  const [events, setEvents] = useState<Event[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [showPreview, setShowPreview] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
-    setIsVisible(true)
+    fetchEventsFromSheet()
   }, [])
 
-  // const handleBooking = (serviceTitle: string) => { // REMOVED
-  //   setSelectedService(serviceTitle) // REMOVED
-  //   setShowContactForm(true) // REMOVED
-  // } // REMOVED
+  const fetchEventsFromSheet = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      
+      console.log("Fetching from:", "https://opensheet.elk.sh/1jUQvRqrZoDeiZfMfBfYtLvs2vr18itxh6RVjIkYb8SI/Sheet1")
+      
+      const response = await fetch("https://opensheet.elk.sh/1jUQvRqrZoDeiZfMfBfYtLvs2vr18itxh6RVjIkYb8SI/Sheet1")
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      const data: SheetEvent[] = await response.json()
+      console.log("Raw data from sheet:", data)
+
+      if (!Array.isArray(data)) {
+        throw new Error("Invalid data format received from sheet")
+      }
+
+      if (data.length === 0) {
+        setEvents([])
+        setError(null)
+        return
+      }
+
+      // Check what columns are available
+      console.log("Available columns:", Object.keys(data[0] || {}))
+
+      const parsedEvents: Event[] = data
+        .filter((e) => {
+          // More flexible filtering - check for any title-like field
+          const hasTitle = e.Title || e.title || e.Name || e.name
+          const hasDate = e.Date || e.date
+          const hasTime = e.Time || e.time
+          return hasTitle && hasDate && hasTime
+        })
+        .map((e, index) => ({
+          id: `event-${index}`,
+          title: e.Title || e.title || e.Name || e.name || "Untitled Session",
+          date: e.Date || e.date || "TBA", // Display as-is from sheet
+          time: e.Time || e.time || "TBA", // Display as-is from sheet
+          description: e.Description || e.description || e.Details || e.details || "",
+          type: e.Type || e.type || e.Category || e.category || "Session",
+          location: e.Location || e.location || e.Venue || e.venue || "TBA",
+          attachment: e.Attachment || e.attachment || e.Link || e.link || "",
+        }))
+
+      console.log("Parsed events:", parsedEvents)
+      setEvents(parsedEvents)
+      setError(null)
+    } catch (err) {
+      console.error("Fetch error:", err)
+      setError(`Failed to fetch events: ${err instanceof Error ? err.message : 'Unknown error'}`)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleViewDetails = (e: React.MouseEvent, event: Event) => {
+    e.stopPropagation() // Prevent card click
+    setSelectedEvent(event)
+    setShowPreview(true)
+  }
+
+  const handleBookSession = (e: React.MouseEvent, event: Event) => {
+    e.stopPropagation() // Prevent card click
+    router.push('/contact')
+  }
+
+  const handleViewAttachment = () => {
+    if (selectedEvent?.attachment) {
+      window.open(selectedEvent.attachment, '_blank')
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white pt-24">
-      {/* Hero Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <div
-            className={`transform transition-all duration-1000 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-8 h-0.5 bg-primary-custom mr-3"></div>
-              <Leaf className="h-6 w-6 text-primary-custom" />
-              <div className="w-8 h-0.5 bg-primary-custom ml-3"></div>
-            </div>
-            <h1 className="font-merienda text-5xl lg:text-7xl font-bold mb-6 text-gray-900">
-              In-Person
-              <span className="text-primary-custom block mt-2">Sessions</span>
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Discover what's happening on the ground in Prāṇa Chitta Ashram and how you can join us in person for
-              transformative breathwork and meditation experiences.
-            </p>
-          </div>
+      <section className="py-16 px-4 text-center">
+        <div className="flex items-center justify-center mb-6">
+          <div className="w-8 h-0.5 bg-primary-custom mr-3" />
+          <Leaf className="h-6 w-6 text-primary-custom" />
+          <div className="w-8 h-0.5 bg-primary-custom ml-3" />
         </div>
+        <h1 className="font-merienda text-5xl font-bold text-gray-900 mb-6">In-Person <span className="text-primary-custom block mt-2">Sessions</span></h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Experience the power of presence in our sacred spaces. Join us for transformative in-person sessions, workshops, and retreats.
+        </p>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Session Pricing</h2>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the format that best supports your healing journey
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {Object.entries(pricingData).map(([key, category], categoryIndex) => (
-              <div
-                key={key}
-                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative ${
-                  key === "bundles" ? "border-2 border-primary-custom/20" : ""
-                } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-                style={{ transitionDelay: `${categoryIndex * 150}ms` }}
-              >
-                {key === "bundles" && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary-custom text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
-                    <Star className="h-3 w-3 mr-1" />
-                    Most Popular
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full mb-4">
-                    <div className="text-primary-custom">{category.icon}</div>
-                  </div>
-                  <h3 className="font-merienda text-2xl font-bold text-gray-900">{category.title}</h3>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  {category.sessions.map((session, index) => (
-                    <div
-                      key={index}
-                      className={`p-4 rounded-xl transition-all duration-300 ${
-                        session.popular
-                          ? "bg-primary-custom/5 border-2 border-primary-custom/20"
-                          : "bg-gray-50 border border-gray-100"
-                      }`}
-                    >
-                      {session.popular && (
-                        <div className="text-xs text-primary-custom font-medium mb-2">Recommended</div>
-                      )}
-
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <span className="text-gray-700 font-medium block">{session.duration}</span>
-                          {session.note && <span className="text-sm text-gray-500 mt-1 block">→ {session.note}</span>}
-                        </div>
-                        <div className="text-right">
-                          <span className="text-2xl font-bold text-primary-custom">{session.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {key === "individual" && (
-                  <Button
-                    asChild
-                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScz1l7-67mF_DUuw3mYaZTOZ0KWTGGukT0ua2NoRDdsomeUng/viewform?usp=sharing&ouid=113782035860637259457">Book 1:1 Sessions</a>
-                  </Button>
-                )}
-
-                {key === "bundles" && (
-                  <Button
-                    asChild
-                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjiNyqResKp-3Lp_hiRktlwswHbjLpq9VyznsJF9UnbU182A/viewform?usp=sharing&ouid=113782035860637259457">Book Session Bundles</a>
-                  </Button>
-                )}
-
-                {key === "group" && (
-                  <Button
-                    asChild
-                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    <a href="https://forms.gle/gxv9CAUurhRTiq3R8">Book Group Sessions</a>
-                  </Button>
-                )}
-
-                {key === "couples" && (
-                  <Button
-                    asChild
-                    className="w-full bg-primary-custom hover:bg-primary-dark text-white py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    <a href="https://forms.gle/dLRtSM6JY3a3LiWz6">Book Couples Breathwork</a>
-                  </Button>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Financial Supports */}
+      <section className="py-12 px-4 max-w-7xl mx-auto">
+        {loading ? (
           <div className="text-center">
-            <div className="max-w-3xl mx-auto bg-white rounded-2xl p-10 shadow-lg border-l-4 border-primary-custom">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full mb-6">
-                <Heart className="h-8 w-8 text-primary-custom" />
-              </div>
-
-              <h3 className="font-merienda text-2xl font-bold text-gray-900 mb-4">Financial Support</h3>
-
-              <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-2xl mx-auto">
-                If you're in a low-income situation, please reach out. We're happy to find a solution together. Our
-                mission is to make these practices accessible to all who feel called to this work.
-              </p>
-
-              <Button
-                asChild
-                className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                <a href="/contact">
-                  <Mail className="h-4 w-4 mr-2" />
-                  Get in Touch
-                </a>
-              </Button>
+            <p className="text-gray-500">Loading events...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center space-y-4">
+            <p className="text-red-500">{error}</p>
+            <Button 
+              onClick={fetchEventsFromSheet}
+              variant="outline"
+              className="mx-auto"
+            >
+              Try Again
+            </Button>
+            <div className="text-sm text-gray-500 max-w-md mx-auto">
+              <p>Make sure your Google Sheet is:</p>
+              <ul className="list-disc list-inside mt-2 space-y-1">
+                <li>Publicly accessible (Anyone with link can view)</li>
+                <li>Published to the web</li>
+                <li>Has columns: Title, Date, Time, Description, Type, Location, Attachment</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Join Us In Person</h2>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Experience the power of community and shared practice</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <MapPin className="h-8 w-8" />,
-                title: "Location",
-                subtitle: "Kandy, Sri Lanka",
-                description: "Nestled in nature's embrace",
-              },
-              {
-                icon: <Phone className="h-8 w-8" />,
-                title: "Contact",
-                subtitle: "Reach out for sessions",
-                description: "We're here to support you",
-              },
-              {
-                icon: <Clock className="h-8 w-8" />,
-                title: "Schedule",
-                subtitle: "By appointment",
-                description: "Flexible timing available",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="text-center p-8 hover:bg-gray-50 rounded-2xl transition-all duration-300 group"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full mb-6 group-hover:bg-primary-custom group-hover:text-white transition-all duration-300">
-                  <div className="text-primary-custom group-hover:text-white transition-colors duration-300">
-                    {item.icon}
-                  </div>
-                </div>
-                <h3 className="font-merienda text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-primary-custom font-semibold mb-2">{item.subtitle}</p>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <Button
-              asChild
-              className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+        ) : events.length === 0 ? (
+          <div className="text-center">
+            <p className="text-gray-500">No sessions scheduled yet.</p>
+            <Button 
+              onClick={fetchEventsFromSheet}
+              variant="outline"
+              className="mt-4"
             >
-              <a href="/contact">Schedule your Visit</a>
+              Refresh
             </Button>
           </div>
-        </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <Card 
+                key={event.id} 
+                className="hover:shadow-xl transition duration-300"
+              >
+                <CardContent className="p-6 space-y-4">
+                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">
+                    {event.type}
+                  </span>
+                  <h3 className="text-xl font-bold font-merienda text-gray-900">{event.title}</h3>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    {event.date}
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Clock className="h-4 w-4 mr-2" />
+                    {event.time}
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <MapPin className="h-4 w-4 mr-2" />
+                    {event.location}
+                  </div>
+                  {event.description && (
+                    <p className="text-sm text-gray-600 line-clamp-2">{event.description}</p>
+                  )}
+                  
+                  {/* Button Row */}
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      onClick={(e) => handleBookSession(e, event)}
+                      className="flex-1 inline-flex items-center justify-center bg-primary-custom hover:bg-primary-dark text-white py-2 px-3 rounded-lg transition-colors text-sm"
+                    >
+                      Book
+                    </button>
+                    <button
+                      onClick={(e) => handleViewDetails(e, event)}
+                      className="flex-1 inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded-lg transition-colors text-sm"
+                    >
+                      <Eye className="h-4 w-4 mr-1" /> Details
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </section>
 
-      {/* <ContactForm // REMOVED
-        isOpen={showContactForm} // REMOVED
-        onClose={() => { // REMOVED
-          setShowContactForm(false) // REMOVED
-          setSelectedService(null) // REMOVED
-        }} // REMOVED
-        title={selectedService ? `Book: ${selectedService}` : "Contact Us"} // REMOVED
-      /> */}
+      {/* Preview Dialog */}
+      <Dialog open={showPreview} onOpenChange={setShowPreview}>
+        <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="font-merienda text-primary-custom text-2xl">
+              {selectedEvent?.title}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedEvent && (
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium">
+                  {selectedEvent.type}
+                </span>
+              </div>
+              
+              <div className="grid gap-4">
+                <div className="flex items-center text-gray-700">
+                  <Calendar className="h-5 w-5 mr-3 text-primary-custom" />
+                  <span className="font-medium">{selectedEvent.date}</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <Clock className="h-5 w-5 mr-3 text-primary-custom" />
+                  <span className="font-medium">{selectedEvent.time}</span>
+                </div>
+                <div className="flex items-center text-gray-700">
+                  <MapPin className="h-5 w-5 mr-3 text-primary-custom" />
+                  <span className="font-medium">{selectedEvent.location}</span>
+                </div>
+              </div>
+
+              {selectedEvent.description && (
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Description</h4>
+                  <p className="text-gray-700 leading-relaxed">{selectedEvent.description}</p>
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-4">
+                <Button
+                  onClick={() => {
+                    setShowPreview(false)
+                    router.push('/contact')
+                  }}
+                  className="flex-1 bg-primary-custom hover:bg-primary-dark text-white"
+                >
+                  Book This Session
+                </Button>
+                
+                {selectedEvent.attachment && (
+                  <Button
+                    onClick={handleViewAttachment}
+                    variant="outline"
+                    className="flex items-center gap-2"
+                  >
+                    <FileText className="h-4 w-4" />
+                    View Attachment
+                    <ExternalLink className="h-3 w-3" />
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

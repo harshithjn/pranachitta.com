@@ -33,12 +33,17 @@ export default function EntryAnimation({ onComplete }: EntryAnimationProps) {
         {/* Icon container */}
         <div className="relative mb-8">
           <div
-            className={`w-24 h-24 bg-primary-custom rounded-full flex items-center justify-center mx-auto transition-all duration-1000 ${
-              stage >= 1 ? "scale-100 opacity-100" : "scale-50 opacity-0"
-            }`}
-          >
-            <Leaf className="h-12 w-12 text-white" />
-          </div>
+  className={`w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto transition-all duration-1000 ${
+    stage >= 1 ? "scale-100 opacity-100" : "scale-50 opacity-0"
+  }`}
+>
+  <img
+    src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" // replace with your actual image URL
+    alt="Icon"
+    className="h-20 w-20 object-contain"
+  />
+</div>
+
 
           {/* Ripple effect */}
           <div
@@ -60,7 +65,7 @@ export default function EntryAnimation({ onComplete }: EntryAnimationProps) {
               stage >= 2 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
-            Prāṇa Chitta
+            Prana Chitta
           </h1>
           <h2
             className={`font-merienda text-2xl lg:text-3xl font-bold text-primary-custom transition-all duration-1000 delay-700 ${

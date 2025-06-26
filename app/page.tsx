@@ -77,7 +77,7 @@ export default function Home() {
                 </div>
 
                 <h1 className="font-merienda text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
-                  Paāṇa Chitta
+                  Prana Chitta
                   <span className="block text-primary-custom mt-2">Ashram</span>
                 </h1>
 
@@ -103,7 +103,7 @@ export default function Home() {
 
             <div className="relative">
               <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.46_wlcow7.png"
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929527/Screenshot_2025-06-26_at_14.48.32_ekyqed.png"
                 alt="Meditation and breathwork practice"
                 width={600}
                 height={500}
@@ -120,7 +120,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761231/Screenshot_2025-06-24_at_16.01.12_updpuz.png"
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.46_wlcow7.png"
                 alt="Peaceful meditation space"
                 width={500}
                 height={400}
@@ -229,67 +229,83 @@ export default function Home() {
 
       {/* What We Offer - Minimal */}
       <section id="offerings" className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Our Offerings</h2>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We offer in-person and online sessions, retreats and trauma-informed counselling support
-            </p>
-          </div>
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 items-start">
+          {/* Right side - Content (appears first on mobile and desktop) */}
+          <div className="lg:order-2">
+            <div className="text-center lg:text-left mb-16">
+              <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Our Offerings</h2>
+              <div className="w-16 h-1 bg-primary-custom mx-auto lg:mx-0 mb-6"></div>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                We offer in-person and online sessions, retreats and trauma-informed counselling support
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Active & Passive Meditation",
-                description: "Still the fluctuations of the mind through guided meditation techniques",
-                icon: <Heart className="h-8 w-8" />,
-              },
-              {
-                title: "Pranayama & Breathwork",
-                description: "Regulate the nervous system and release stored energetic blockages",
-                icon: <Wind className="h-8 w-8" />,
-              },
-              {
-                title: "Conscious Movement",
-                description: "Awaken presence in the body through gentle, conscious movement practices",
-                icon: <Users className="h-8 w-8" />,
-              },
-              {
-                title: "Silence & Inner Inquiry",
-                description: "Gently meet what is ready to be seen and loved within you",
-                icon: <Leaf className="h-8 w-8" />,
-              },
-              {
-                title: "Cranio-Sacral Therapy",
-                description: "Release pain from injuries and work through somato-emotional layers",
-                icon: <Award className="h-8 w-8" />,
-              },
-            ].map((offer, index) => (
-              <div
-                key={index}
-                className="group text-center p-6 hover:bg-gray-50 rounded-2xl transition-all duration-300"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full mb-6 text-primary-custom group-hover:bg-primary-custom group-hover:text-white transition-all duration-300">
-                  {offer.icon}
+            <div className="grid gap-8">
+              {[
+                {
+                  title: "Active & Passive Meditation",
+                  description: "Still the fluctuations of the mind through guided meditation techniques",
+                  icon: <Heart className="h-8 w-8" />,
+                },
+                {
+                  title: "Pranayama & Breathwork",
+                  description: "Regulate the nervous system and release stored energetic blockages",
+                  icon: <Wind className="h-8 w-8" />,
+                },
+                {
+                  title: "Conscious Movement",
+                  description: "Awaken presence in the body through gentle, conscious movement practices",
+                  icon: <Award className="h-8 w-8" />,
+                },
+                {
+                  title: "Silence & Inner Inquiry",
+                  description: "Gently meet what is ready to be seen and loved within you",
+                  icon: <Leaf className="h-8 w-8" />,
+                },
+                {
+                  title: "Cranio-Sacral Therapy",
+                  description: "Release pain from injuries and work through somato-emotional layers",
+                  icon: <Users className="h-8 w-8" />,
+                },
+              ].map((offer, index) => (
+                <div
+                  key={index}
+                  className="group flex items-start space-x-4 p-6 hover:bg-gray-50 rounded-2xl transition-all duration-300"
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-custom/10 rounded-full text-primary-custom group-hover:bg-primary-custom group-hover:text-white transition-all duration-300 flex-shrink-0">
+                    {offer.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-merienda text-xl font-bold text-gray-900 mb-3">{offer.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{offer.description}</p>
+                  </div>
                 </div>
-                <h3 className="font-merienda text-xl font-bold text-gray-900 mb-3">{offer.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{offer.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="text-center mt-16 max-w-4xl mx-auto">
-  <div className="bg-primary-custom/5 rounded-2xl p-6 border-l-4 border-primary-custom">
-    <p className="font-merienda text-xl text-primary-custom font-medium italic leading-relaxed">
-      We create simple shared spaces to feel what it means to be alive, together.
-    </p>
-  </div>
-</div>
-
+          {/* Left side - Image and Quote (appears after content on mobile, left side on desktop) */}
+          <div className="space-y-8 lg:order-1">
+            <div className="flex items-center justify-center">
+              <div className="w-full max-w-md aspect-[9/16] bg-gray-100 rounded-lg flex items-center justify-center">
+                <img 
+                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761230/Screenshot_2025-06-24_at_16.00.15_xjro1z.png" 
+                  alt="Our Offerings" 
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            </div>
+            
+            <div className="bg-primary-custom/5 rounded-2xl p-6 border-l-4 border-primary-custom">
+              <p className="font-merienda text-xl text-primary-custom font-medium italic leading-relaxed">
+                We create simple shared spaces to feel what it means to be alive, together.
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
-
+      </div>
+    </section>
       {/* Experience Our Offerings - New Design */}
       <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto max-w-6xl">
@@ -368,59 +384,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Prana Chitta Ashram */}
       <section id="about" className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">About Prāṇa Chitta Ashram</h2>
-            <div className="w-16 h-1 bg-primary-custom mx-auto"></div>
-          </div>
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">About Prana Chitta Ashram</h2>
+          <div className="w-16 h-1 bg-primary-custom mx-auto"></div>
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-custom/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Wind className="h-6 w-6 text-primary-custom" />
-                  </div>
-                  <div>
-                    <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Prāṇa</h3>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      The subtle breath of life - the unseen current flowing through everything that moves, grows and
-                      awakens. Not just the air we breathe, but the living force that animates us from within.
-                    </p>
-                  </div>
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          {/* Left side - Content */}
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary-custom/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Wind className="h-6 w-6 text-primary-custom" />
+                </div>
+                <div>
+                  <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Prāṇa</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    The subtle breath of life - the unseen current flowing through everything that moves, grows and
+                    awakens. Not just the air we breathe, but the living force that animates us from within.
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-primary-custom/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Heart className="h-6 w-6 text-primary-custom" />
-                  </div>
-                  <div>
-                    <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Chitta</h3>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      The field of awareness - the heart-mind where thoughts arise, emotions pass and stillness waits
-                      beneath it all.
-                    </p>
-                  </div>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-primary-custom/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <Heart className="h-6 w-6 text-primary-custom" />
+                </div>
+                <div>
+                  <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Chitta</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    The field of awareness - the heart-mind where thoughts arise, emotions pass and stillness waits
+                    beneath it all.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="text-center max-w-4xl mx-auto">
-            <h4 className="font-merienda text-3xl font-bold text-gray-900 mb-6">The Unity of Breath and Awareness</h4>
-            <p className="text-xl text-gray-700 leading-relaxed font-medium">
-              Together, prāṇa and chitta hold the key to presence: When prāṇa flows freely, chitta becomes clear. One
-              moves, one reflects. In their meeting, we return to the quiet intelligence of life itself.
-            </p>
+          {/* Right side - Image space */}
+          <div className="flex items-center justify-center">
+            <div className="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
+              <img 
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
+                alt="Prana Chitta Ashram" 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
-      </section>
+
+        <div className="text-center max-w-4xl mx-auto">
+          <h4 className="font-merienda text-3xl font-bold text-gray-900 mb-6">The Unity of Breath and Awareness</h4>
+          <p className="text-xl text-gray-700 leading-relaxed font-medium">
+            Together, prāṇa and chitta hold the key to presence: When prāṇa flows freely, chitta becomes clear. One
+            moves, one reflects. In their meeting, we return to the quiet intelligence of life itself.
+          </p>
+        </div>
+      </div>
+    </section>
 
       {/* About Teacher Section with Image */}
       <section className="py-20 px-4 bg-gray-50">
@@ -433,31 +458,39 @@ export default function Home() {
         <div>
           <div className="flex items-center mb-6">
             <User className="h-8 w-8 text-primary-custom mr-3" />
-            <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Gitana</h2>
+            <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet our Founder & Guide
+</h2>
           </div>
-          <div className="w-16 h-1 bg-primary-custom mb-8"></div>
+          <div className="w-25 h-1 bg-primary-custom mb-8"></div>
         </div>
 
         {/* Description */}
-        <div className="space-y-6 text-gray-700 leading-relaxed">
-          <p>
-            Qualified in Hatha, Ashtanga, Vinyasa, and Kriya Yoga, with additional certification in pre- and
-            postnatal yoga informed by Ayurvedic principles.
-          </p>
-          <p>
-            Specialised in conscious connected breathwork, advanced pranayama, and subtle energy work with a focus
-            on the chakra system.
-          </p>
-          <p>
-            Facilitator of active and passive meditation, with a passion for Osho Meditations, Sufism, Bhakti Yoga
-            and mantra chanting.
-          </p>
-          <p>
-            Additionally trained in craniosacral therapy and integrative bodywork. All sessions supported by
-            trauma-informed, counseling-based guidance focused on nervous system regulation and emotional
-            integration.
-          </p>
-        </div>
+<div className="space-y-6 text-gray-700 leading-relaxed">
+  <p>
+    Gitana brings years of dedicated practice and study in yoga, breathwork, meditation and somatic healing.
+    Her approach is rooted in both ancient wisdom traditions and modern therapeutic understanding, creating
+    a safe and nurturing space for transformation. Her sessions are grounded in nervous system regulation and
+    emotional integration.
+  </p>
+  <p>
+    Gitana is trained in a wide range of modalities including trauma-informed counseling, yoga, integrative
+    bodywork and craniosacral therapy. She specialises in conscious connected breathwork, advanced pranayama
+    and subtle energy work with a focus on the chakra system.
+  </p>
+  <p>
+    She facilitates both active and passive meditations, with a deep passion for Osho meditations, Sufism,
+    Bhakti Yoga and mantra chanting.
+  </p>
+  <p>
+    She also holds additional certification in pre- and postnatal yoga, guided by Ayurvedic principles and
+    a holistic understanding of the feminine journey.
+  </p>
+  <p>
+    Gitana guides individuals and groups with compassion, authenticity and deep respect for each person's
+    unique journey.
+  </p>
+</div>
+
 
         {/* Quote */}
         <div className="bg-primary-custom/5 rounded-2xl p-6 border-l-4 border-primary-custom">
@@ -472,7 +505,7 @@ export default function Home() {
           asChild
           className="mt-6 bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         >
-          <a href="/contact">Contact to Learn More</a>
+          <a href="/contact">Get in touch</a>
         </Button>
       </div>
 
@@ -541,11 +574,11 @@ export default function Home() {
 
             <div>
               <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.46_wlcow7.png"
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
                 alt="Ashram in Kandy, Sri Lanka"
                 width={600}
                 height={500}
-                className="w-full h-96 object-cover rounded-2xl shadow-lg"
+                className="w-full h-full object-cover rounded-2xl shadow-lg"
               />
             </div>
           </div>
@@ -553,11 +586,14 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <div className="overflow-x-auto px-2">
+<div className="overflow-x-auto px-2">
   <div
     ref={reviewsRef}
     className="flex space-x-8 pb-4"
-    style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+    style={{
+      scrollSnapType: "x mandatory",
+      WebkitOverflowScrolling: "touch",
+    }}
   >
     {reviews.map((review, index) => (
       <div
@@ -575,7 +611,21 @@ export default function Home() {
       </div>
     ))}
   </div>
+
+  {/* Scroll dots */}
+  <div className="flex justify-center mt-4 space-x-2">
+    {reviews.map((_, index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentReview(index)}
+        className={`w-3 h-3 rounded-full transition-all ${
+          currentReview === index ? "bg-primary-custom scale-125" : "bg-gray-300"
+        }`}
+      />
+    ))}
+  </div>
 </div>
+
 
 
       {/* Newsletter Section */}
