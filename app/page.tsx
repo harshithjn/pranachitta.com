@@ -31,6 +31,11 @@ export default function Home() {
       image: "J",
     },
     {
+      name: "Anjali",
+      text: "As a yoga teacher myself, I was blown away by the depth, wisdom and love that Gitana embodied in each session. Her facilitation was a masterclass in holding space, guiding exploration and nurturing growth. Over the 2-weeks, I felt my entire being unwind, calm and center. The practices, discussions and meditations were expertly woven together (…) Gitana's guidance was instrumental in helping me navigate my chakra practice. Her insights and suggestions were practical, compassionate and empowering",
+      image: "A",
+    },
+    {
       name: "Sine",
       text: "I really had a great time learning with Gitana. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
       image: "S",
@@ -277,7 +282,7 @@ export default function Home() {
               </div>
               <div>
                 <Image
-                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750938392/Screenshot_2025-06-26_at_17.16.18_rezhiq.png"
+                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761230/Screenshot_2025-06-24_at_15.59.32_pn7daq.png"
                   alt="Online meditation session"
                   width={600}
                   height={400}
@@ -362,15 +367,15 @@ export default function Home() {
           </div>
 
           {/* Right side - Image space */}
-          <div className="flex items-center justify-center">
-  <div className="w-full h-[32rem] sm:h-[36rem] md:h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-    <img 
-      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
-      alt="Prana Chitta Ashram" 
-      className="w-full h-full object-cover rounded-lg"
-    />
-  </div>
-</div>
+         <div className="flex items-center justify-center">
+            <div className="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
+              <img 
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
+                alt="Prana Chitta Ashram" 
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
 
         </div>
 
@@ -523,6 +528,10 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
+<div className="text-center mb-8">
+  <h2 className="text-5xl font-merienda font-bold text-primary-custom">Reviews</h2>
+</div>
+
 <div className="overflow-x-auto px-2">
   <div
     ref={reviewsRef}
