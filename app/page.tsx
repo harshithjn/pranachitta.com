@@ -548,19 +548,6 @@ export default function Home() {
       </div>
     ))}
   </div>
-
-  {/* Scroll dots */}
-  <div className="flex justify-center mt-4 space-x-2">
-    {reviews.map((_, index) => (
-      <button
-        key={index}
-        onClick={() => setCurrentReview(index)}
-        className={`w-3 h-3 rounded-full transition-all ${
-          currentReview === index ? "bg-primary-custom scale-125" : "bg-gray-300"
-        }`}
-      />
-    ))}
-  </div>
 </div>
 
 
