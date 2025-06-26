@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
-import { ArrowRight, Leaf, Heart, Wind, Play, Users, Award, Quote, Calendar, MapPin, User } from "lucide-react"
+import { ArrowRight, Leaf, Heart, Wind, Play, Users, Award, Quote, Calendar, MapPin, User , Move} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import ContactForm from "@/components/ContactForm"
@@ -84,9 +84,8 @@ export default function Home() {
                 <p className="font-merienda text-xl lg:text-2xl text-primary-custom font-medium italic mb-4">
                   Breathing into loving awareness
                 </p>
-
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Meditation Center & Ashram for the living heart-mind
+                  A meditation center and ashram for the living heart-mind, supporting individuals in awakening their life energy and softening into the wholeness of the present moment.
                 </p>
 
                 <Button
@@ -103,7 +102,7 @@ export default function Home() {
 
             <div className="relative">
               <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929527/Screenshot_2025-06-26_at_14.48.32_ekyqed.png"
+                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750938287/Screenshot_2025-06-26_at_17.14.25_bqodcg.png"
                 alt="Meditation and breathwork practice"
                 width={600}
                 height={500}
@@ -162,70 +161,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scattered Images Section */}
-      <section className="py-16 px-4">
-      <div className="container mx-auto max-w-7xl">
-        {/* Mobile: Single Image */}
-        <div className="block md:hidden">
-          <Image
-            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-02_etyuoy.png"
-            alt="Mobile yoga image"
-            width={600}
-            height={400}
-            className="w-full h-80 object-cover rounded-2xl shadow-lg"
-          />
-        </div>
-
-        {/* Desktop: Grid Layout */}
-        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="md:col-span-2">
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761234/Screenshot_2025-06-24_at_16.01.37_knvoov.png"
-              alt="Yoga practice"
-              width={500}
-              height={300}
-              className="w-full h-64 object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.03_nppwkl.png"
-              alt="Meditation"
-              width={300}
-              height={300}
-              className="w-full h-64 object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-          <div className="lg:row-span-2">
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761231/Screenshot_2025-06-24_at_16.01.00_zsybnn.png"
-              alt="Breathwork session"
-              width={300}
-              height={500}
-              className="w-full h-full object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-          <div>
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761525/Screenshot_2025-06-24_at_16.08.16_mdm866.png"
-              alt="Nature meditation"
-              width={300}
-              height={300}
-              className="w-full h-64 object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761238/Screenshot_2025-06-24_at_16.01.55_hvt2qz.png"
-              alt="Group session"
-              width={500}
-              height={300}
-              className="w-full h-64 object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
       {/* What We Offer - Minimal */}
       <section id="offerings" className="py-20 px-4 bg-white">
@@ -256,7 +192,7 @@ export default function Home() {
                 {
                   title: "Conscious Movement",
                   description: "Awaken presence in the body through gentle, conscious movement practices",
-                  icon: <Award className="h-8 w-8" />,
+                  icon: <Move className="h-8 w-8" />,
                 },
                 {
                   title: "Silence & Inner Inquiry",
@@ -288,9 +224,9 @@ export default function Home() {
           {/* Left side - Image and Quote (appears after content on mobile, left side on desktop) */}
           <div className="space-y-8 lg:order-1">
             <div className="flex items-center justify-center">
-              <div className="w-full max-w-md aspect-[9/16] bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="w-full max-w-md aspect-[9/16] rounded-lg flex items-center justify-center bg-transparent">
                 <img 
-                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761230/Screenshot_2025-06-24_at_16.00.15_xjro1z.png" 
+                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750937994/Screenshot_2025-06-26_at_17.09.03_wsa0nz.png" 
                   alt="Our Offerings" 
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -341,7 +277,7 @@ export default function Home() {
               </div>
               <div>
                 <Image
-                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750761230/Screenshot_2025-06-24_at_15.59.32_pn7daq.png"
+                  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750938392/Screenshot_2025-06-26_at_17.16.18_rezhiq.png"
                   alt="Online meditation session"
                   width={600}
                   height={400}
@@ -400,7 +336,7 @@ export default function Home() {
                   <Wind className="h-6 w-6 text-primary-custom" />
                 </div>
                 <div>
-                  <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Prāṇa</h3>
+                  <h3 className="font-merienda text-2xl font-bold text-primary-custom mb-3">Prana</h3>
                   <p className="text-lg text-gray-700 leading-relaxed">
                     The subtle breath of life - the unseen current flowing through everything that moves, grows and
                     awakens. Not just the air we breathe, but the living force that animates us from within.
@@ -427,14 +363,15 @@ export default function Home() {
 
           {/* Right side - Image space */}
           <div className="flex items-center justify-center">
-            <div className="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-              <img 
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
-                alt="Prana Chitta Ashram" 
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
+  <div className="w-full h-[32rem] sm:h-[36rem] md:h-96 bg-gray-100 rounded-lg flex items-center justify-center">
+    <img 
+      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
+      alt="Prana Chitta Ashram" 
+      className="w-full h-full object-cover rounded-lg"
+    />
+  </div>
+</div>
+
         </div>
 
         <div className="text-center max-w-4xl mx-auto">
@@ -458,7 +395,7 @@ export default function Home() {
         <div>
           <div className="flex items-center mb-6">
             <User className="h-8 w-8 text-primary-custom mr-3" />
-            <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet our Founder & Guide
+            <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Founder & Facilitator
 </h2>
           </div>
           <div className="w-25 h-1 bg-primary-custom mb-8"></div>
@@ -478,11 +415,11 @@ export default function Home() {
     and subtle energy work with a focus on the chakra system.
   </p>
   <p>
-    She facilitates both active and passive meditations, with a deep passion for Osho meditations, Sufism,
+    She facilitates both active and passive meditations, with a deep passion for Osho Meditations, Sufism,
     Bhakti Yoga and mantra chanting.
   </p>
   <p>
-    She also holds additional certification in pre- and postnatal yoga, guided by Ayurvedic principles and
+    She also holds additional certification in Pre- and Postnatal Yoga, guided by Ayurvedic principles and
     a holistic understanding of the feminine journey.
   </p>
   <p>
