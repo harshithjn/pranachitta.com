@@ -63,32 +63,26 @@ export default function EntryAnimation({ onComplete }: EntryAnimationProps) {
 
           {/* Logo with sophisticated entrance */}
           <div
-            className={`relative w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto shadow-lg transition-all duration-1200 ease-out ${
-              stage >= 1 
-                ? "scale-100 opacity-100 rotate-0 blur-0" 
-                : "scale-0 opacity-0 rotate-180 blur-sm"
-            }`}
-            style={{
-              transform: stage >= 1 
-                ? "translateY(0) scale(1) rotate(0deg)" 
-                : "translateY(20px) scale(0.3) rotate(180deg)"
-            }}
-          >
-            <img
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png"
-              alt="Prana Chitta Ashram Logo"
-              className={`h-20 w-20 object-contain transition-all duration-1000 ${
-                stage >= 1 ? "scale-100" : "scale-75"
-              }`}
-            />
-            
-            {/* Subtle glow effect */}
-            <div 
-              className={`absolute inset-0 rounded-full bg-primary-custom/10 transition-all duration-1500 ${
-                stage >= 1 ? "scale-110 opacity-100" : "scale-50 opacity-0"
-              }`}
-            ></div>
-          </div>
+  className={`relative w-24 h-24 mx-auto transition-all duration-1200 ease-out ${
+    stage >= 1 
+      ? "scale-100 opacity-100 rotate-0 blur-0" 
+      : "scale-0 opacity-0 rotate-180 blur-sm"
+  }`}
+  style={{
+    transform: stage >= 1 
+      ? "translateY(0) scale(1) rotate(0deg)" 
+      : "translateY(20px) scale(0.3) rotate(180deg)"
+  }}
+>
+  <img
+    src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751099994/Screenshot_2025-06-28_at_14.08.48-removebg-preview_ohd9mh.png"
+    alt="Prana Chitta Ashram Logo"
+    className={`h-24 w-24 object-contain transition-all duration-1000 ${
+      stage >= 1 ? "scale-100" : "scale-75"
+    }`}
+  />
+</div>
+
 
           {/* Floating particles */}
           <div className={`absolute -top-4 -left-4 w-2 h-2 bg-primary-custom/30 rounded-full transition-all duration-2000 ${

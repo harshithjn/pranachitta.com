@@ -19,9 +19,7 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: "Prāṇa Chitta Ashram - Meditation Center & Ashram for the Living Heart-Mind",
-  description:
-    "Breathing into loving awareness. Meditation, Yoga, Breathwork, Prana, Pranayama, Chitta, Kandy, Pre-Postnatal Yoga, Hatha Yoga, Sattva, Ashram",
+  title: "Prana Chitta Ashram ",
   keywords:
     "Meditation, Yoga, Breathwork, Prana, Pranayama, Chitta, Kandy, Pre-Postnatal Yoga, Hatha Yoga, Sattva, Ashram",
   icons: {

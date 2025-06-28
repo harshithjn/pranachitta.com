@@ -326,6 +326,33 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="max-w-3xl mx-auto px-4 mt-12">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {/* Left Column: 2 horizontal images stacked vertically */}
+    <div className="md:col-span-2 grid grid-rows-2 gap-4">
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_1_fuqxpz.jpg" 
+        alt="Horizontal 1" 
+        className="w-full h-auto rounded-lg object-cover"
+      />
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_djggks.jpg" 
+        alt="Horizontal 2" 
+        className="w-full h-auto rounded-lg object-cover"
+      />
+    </div>
+
+    {/* Right Column: 1 vertical image */}
+    <div className="flex">
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100865/WhatsApp_Image_2025-06-27_at_08.32.22_k7si2q.jpg" 
+        alt="Vertical" 
+        className="w-full h-auto rounded-lg object-cover"
+      />
+    </div>
+  </div>
+</div>
+
 
       <section id="about" className="py-20 px-4 bg-white">
       <div className="container mx-auto max-w-6xl">
@@ -370,24 +397,39 @@ export default function Home() {
 
           {/* Right side - Image space */}
          <div className="flex items-center justify-center">
-            <div className="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-              <img 
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" 
-                alt="Prana Chitta Ashram" 
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-          </div>
+  <img 
+    src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751099994/Screenshot_2025-06-28_at_14.08.48-removebg-preview_ohd9mh.png" 
+    alt="Prana Chitta Ashram" 
+    className="w-full h-96 object-contain"
+  />
+</div>
+
 
         </div>
 
-        <div className="text-center max-w-4xl mx-auto">
-          <h4 className="font-merienda text-3xl font-bold text-gray-900 mb-6">The Unity of Breath and Awareness</h4>
-          <p className="text-xl text-gray-700 leading-relaxed font-medium">
-            Together, prāṇa and chitta hold the key to presence: When prāṇa flows freely, chitta becomes clear. One
-            moves, one reflects. In their meeting, we return to the quiet intelligence of life itself.
-          </p>
-        </div>
+        <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-4 gap-8 mt-10">
+  {/* Text Section */}
+  <div className="md:w-1/2 text-center md:text-left">
+    <h4 className="font-merienda text-3xl font-bold text-gray-900 mb-6">
+      The Unity of Breath and Awareness
+    </h4>
+    <p className="text-xl text-gray-700 leading-relaxed font-medium">
+      Together, prāṇa and chitta hold the key to presence: When prāṇa flows freely, chitta becomes clear.
+      One moves, one reflects. In their meeting, we return to the quiet intelligence of life itself.
+    </p>
+  </div>
+
+  {/* Image Section */}
+  <div className="md:w-1/2 flex justify-center">
+    <img 
+      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100336/WhatsApp_Image_2025-06-27_at_08.57.53_gm58yt.jpg" 
+      alt="Prana Chitta Ashram" 
+      className="w-64 h-auto object-contain"
+    />
+  </div>
+</div>
+
+
       </div>
     </section>
 
@@ -470,79 +512,106 @@ export default function Home() {
   </div>
 </section>
 
-      {/* The Ashram */}
-      <section className="py-20 px-4 bg-white">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-6">
-            <MapPin className="h-8 w-8 text-primary-custom mr-3" />
-            <h2 className="font-merienda text-4xl font-bold text-gray-900">The Ashram</h2>
-          </div>
+ <section className="py-20 px-4 bg-white">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-16">
+      <div className="flex items-center justify-center mb-6">
+        <MapPin className="h-8 w-8 text-primary-custom mr-3" />
+        <h2 className="font-merienda text-4xl font-bold text-gray-900">The Ashram</h2>
+      </div>
 
-          <div className="w-16 h-1 bg-primary-custom mx-auto mb-8"></div>
+      <div className="w-16 h-1 bg-primary-custom mx-auto mb-8"></div>
 
-          <div className="inline-flex items-center bg-primary-custom/10 rounded-full px-6 py-3">
-            <span className="text-2xl mr-2">📍</span>
-            <p className="text-xl text-primary-custom font-semibold">Opening Soon • Kandy, Sri Lanka</p>
-          </div>
+      <div className="inline-flex items-center bg-primary-custom/10 rounded-full px-6 py-3">
+        <span className="text-2xl mr-2">📍</span>
+        <p className="text-xl text-primary-custom font-semibold">Opening Soon • Kandy, Sri Lanka</p>
+      </div>
+    </div>
+
+    {/* First image - visible only on mobile */}
+    <div className="lg:hidden mb-12">
+      <Image
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
+        alt="Ashram in Kandy, Sri Lanka"
+        width={600}
+        height={500}
+        className="w-full h-full object-cover rounded-2xl shadow-lg"
+      />
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="space-y-8">
+        <p className="text-lg text-gray-700 leading-relaxed">
+          The word ashram comes from the Sanskrit root <em className="text-primary-custom font-semibold">śram</em>,
+          meaning both effort and rest. It is a place of dedicated practice and simple living.
+        </p>
+
+        <p className="text-lg text-gray-700 leading-relaxed">
+          The ashram in Kandy is a quiet refuge nestled in nature, where life follows the rhythm of deepening
+          breath, growing awareness and simple, conscious living.
+        </p>
+
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Here, we live and practice together - we breathe, cook, move, sit in silence, tend to the garden and share
+          with honesty and care.
+        </p>
+
+        <div className="bg-primary-custom/5 rounded-2xl p-8 border-l-4 border-primary-custom">
+          <p className="font-merienda text-xl text-primary-custom font-semibold italic leading-relaxed">
+            Whether you come for a week, a season, or longer, this is a space to come home. To breathe more deeply,
+            unlearn what is no longer needed, and remember what has always been within you.
+          </p>
         </div>
 
-        {/* Mobile image - shows only on mobile, right after the header */}
-        <div className="lg:hidden mb-12">
+        <Button
+          asChild
+          className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+        >
+          <a href="/contact">Contact for Booking Enquiry</a>
+        </Button>
+
+        {/* Second image on mobile - shown below the contact button */}
+        <div className="lg:hidden mt-8">
           <Image
-            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
-            alt="Ashram in Kandy, Sri Lanka"
+            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751101535/WhatsApp_Image_2025-06-27_at_08.55.17_vuccze.jpg"
+            alt="Ashram Surroundings"
             width={600}
             height={500}
             className="w-full h-full object-cover rounded-2xl shadow-lg"
           />
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              The word ashram comes from the Sanskrit root <em className="text-primary-custom font-semibold">śram</em>,
-              meaning both effort and rest. It is a place of dedicated practice and simple living.
-            </p>
-
-            <p className="text-lg text-gray-700 leading-relaxed">
-              The ashram in Kandy is a quiet refuge nestled in nature, where life follows the rhythm of deepening
-              breath, growing awareness and simple, conscious living.
-            </p>
-
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Here, we live and practice together - we breathe, cook, move, sit in silence, tend to the garden and share
-              with honesty and care.
-            </p>
-
-            <div className="bg-primary-custom/5 rounded-2xl p-8 border-l-4 border-primary-custom">
-              <p className="font-merienda text-xl text-primary-custom font-semibold italic leading-relaxed">
-                Whether you come for a week, a season, or longer, this is a space to come home. To breathe more deeply,
-                unlearn what is no longer needed, and remember what has always been within you.
-              </p>
-            </div>
-
-            <Button
-              asChild
-              className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              <a href="/contact">Contact for Booking Enquiry</a>
-            </Button>
-          </div>
-
-          {/* Desktop image - shows only on desktop */}
-          <div className="hidden lg:block">
-            <Image
-              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
-              alt="Ashram in Kandy, Sri Lanka"
-              width={600}
-              height={500}
-              className="w-full h-full object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-        </div>
       </div>
-    </section>
+
+      {/* Desktop images side-by-side */}
+  <div className="hidden lg:flex flex-col gap-6 items-center">
+  {/* First 4:3 image */}
+  <div className="w-full max-w-sm aspect-[4/3] rounded-xl overflow-hidden shadow-lg relative">
+    <Image
+      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
+      alt="Ashram in Kandy, Sri Lanka"
+      fill
+      className="object-cover"
+    />
+  </div>
+
+  {/* Second 4:3 image */}
+  <div className="w-full max-w-sm aspect-[4/3] rounded-xl overflow-hidden shadow-lg relative">
+    <Image
+      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751101535/WhatsApp_Image_2025-06-27_at_08.55.17_vuccze.jpg"
+      alt="Ashram Surroundings"
+      fill
+      className="object-cover"
+    />
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+</section>
+
 
       {/* Reviews Section */}
 <>
