@@ -12,48 +12,50 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentReview, setCurrentReview] = useState(0)
   const [showContactForm, setShowContactForm] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const reviewsRef = useRef<HTMLDivElement>(null)
 
   const reviews = [
-    {
-      name: "Simona Anna",
-      text: 'Meeting Gitana and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
-      image: "SA",
-    },
-    {
-      name: "Monica",
-      text: "Gitana has been such a beautiful addition to our lives. Working with her has truly been transformational for both me and my husband. She's given us tools to better regulate our nervous systems and helped us connect more deeply with our inner worlds - and with each other. Her sessions create such a safe, open space to release, reflect, and speak freely. We always leave feeling more grounded, connected, and understood. So grateful for her work!",
-      image: "M",
-    },
-    {
-      name: "Joanne",
-      text: "I attended one of Gitana's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
-      image: "J",
-    },
-    {
-      name: "Anjali",
-      text: "As a yoga teacher myself, I was blown away by the depth, wisdom and love that Gitana embodied in each session. Her facilitation was a masterclass in holding space, guiding exploration and nurturing growth. Over the 2-weeks, I felt my entire being unwind, calm and center. The practices, discussions and meditations were expertly woven together (…) Gitana's guidance was instrumental in helping me navigate my chakra practice. Her insights and suggestions were practical, compassionate and empowering",
-      image: "A",
-    },
-    {
-      name: "Sine",
-      text: "I really had a great time learning with Gitana. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
-      image: "S",
-    },
-    {
-      name: "Dominique",
-      text: "Was blessed with meeting Gitana and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
-      image: "D",
-    },
-  ]
-
+  {
+    name: "Simona Anna",
+    text: 'Meeting Gitana and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
+    image: "SA",
+  },
+  {
+    name: "Monica",
+    text: "Gitana has been such a beautiful addition to our lives. Working with her has truly been transformational for both me and my husband. She's given us tools to better regulate our nervous systems and helped us connect more deeply with our inner worlds - and with each other. Her sessions create such a safe, open space to release, reflect, and speak freely. We always leave feeling more grounded, connected, and understood. So grateful for her work!",
+    image: "M",
+  },
+  {
+    name: "Joanne",
+    text: "I attended one of Gitana's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
+    image: "J",
+  },
+  {
+    name: "Anjali",
+    text: "As a yoga teacher myself, I was blown away by the depth, wisdom and love that Gitana embodied in each session. Her facilitation was a masterclass in holding space, guiding exploration and nurturing growth. Over the 2-weeks, I felt my entire being unwind, calm and center. The practices, discussions and meditations were expertly woven together (…) Gitana's guidance was instrumental in helping me navigate my chakra practice. Her insights and suggestions were practical, compassionate and empowering",
+    image: "A",
+  },
+  {
+    name: "Sine",
+    text: "I really had a great time learning with Gitana. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
+    image: "S",
+  },
+  {
+    name: "Dominique",
+    text: "Was blessed with meeting Gitana and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
+    image: "D",
+  },
+]
   useEffect(() => {
     setIsVisible(true)
     const interval = setInterval(() => {
-      setCurrentReview((prev) => (prev + 1) % reviews.length)
+      if (!isPaused) {
+        setCurrentReview((prev) => (prev + 1) % reviews.length)
+      }
     }, 5000)
     return () => clearInterval(interval)
-  }, [reviews.length])
+  }, [isPaused, reviews.length])
 
   useEffect(() => {
     if (reviewsRef.current) {
@@ -166,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-    
+  
 
       {/* What We Offer - Minimal */}
       <section id="offerings" className="py-20 px-4 bg-white">
@@ -470,94 +472,114 @@ export default function Home() {
 
       {/* The Ashram */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <MapPin className="h-8 w-8 text-primary-custom mr-3" />
-              <h2 className="font-merienda text-4xl font-bold text-gray-900">The Ashram</h2>
-            </div>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-8"></div>
-            <div className="inline-flex items-center bg-primary-custom/10 rounded-full px-6 py-3">
-              <span className="text-2xl mr-2">📍</span>
-              <p className="text-xl text-primary-custom font-semibold">Opening Soon • Kandy, Sri Lanka</p>
-            </div>
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center mb-6">
+            <MapPin className="h-8 w-8 text-primary-custom mr-3" />
+            <h2 className="font-merienda text-4xl font-bold text-gray-900">The Ashram</h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                The word ashram comes from the Sanskrit root <em className="text-primary-custom font-semibold">śram</em>
-                , meaning both effort and rest. It is a place of dedicated practice and simple living.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                The ashram in Kandy is a quiet refuge nestled in nature, where life follows the rhythm of deepening
-                breath, growing awareness and simple, conscious living.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Here, we live and practice together - we breathe, cook, move, sit in silence, tend to the garden and
-                share with honesty and care.
-              </p>
+          <div className="w-16 h-1 bg-primary-custom mx-auto mb-8"></div>
 
-              <div className="bg-primary-custom/5 rounded-2xl p-8 border-l-4 border-primary-custom">
-                <p className="font-merienda text-xl text-primary-custom font-semibold italic leading-relaxed">
-                  Whether you come for a week, a season, or longer, this is a space to come home. To breathe more
-                  deeply, unlearn what is no longer needed, and remember what has always been within you.
-                </p>
-              </div>
-
-              <Button
-  asChild
-  className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
->
-  <a href="/contact">Contact for Booking Enquiry</a>
-</Button>
-
-            </div>
-
-            <div>
-              <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
-                alt="Ashram in Kandy, Sri Lanka"
-                width={600}
-                height={500}
-                className="w-full h-full object-cover rounded-2xl shadow-lg"
-              />
-            </div>
+          <div className="inline-flex items-center bg-primary-custom/10 rounded-full px-6 py-3">
+            <span className="text-2xl mr-2">📍</span>
+            <p className="text-xl text-primary-custom font-semibold">Opening Soon • Kandy, Sri Lanka</p>
           </div>
         </div>
-      </section>
+
+        {/* Mobile image - shows only on mobile, right after the header */}
+        <div className="lg:hidden mb-12">
+          <Image
+            src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
+            alt="Ashram in Kandy, Sri Lanka"
+            width={600}
+            height={500}
+            className="w-full h-full object-cover rounded-2xl shadow-lg"
+          />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <p className="text-lg text-gray-700 leading-relaxed">
+              The word ashram comes from the Sanskrit root <em className="text-primary-custom font-semibold">śram</em>,
+              meaning both effort and rest. It is a place of dedicated practice and simple living.
+            </p>
+
+            <p className="text-lg text-gray-700 leading-relaxed">
+              The ashram in Kandy is a quiet refuge nestled in nature, where life follows the rhythm of deepening
+              breath, growing awareness and simple, conscious living.
+            </p>
+
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Here, we live and practice together - we breathe, cook, move, sit in silence, tend to the garden and share
+              with honesty and care.
+            </p>
+
+            <div className="bg-primary-custom/5 rounded-2xl p-8 border-l-4 border-primary-custom">
+              <p className="font-merienda text-xl text-primary-custom font-semibold italic leading-relaxed">
+                Whether you come for a week, a season, or longer, this is a space to come home. To breathe more deeply,
+                unlearn what is no longer needed, and remember what has always been within you.
+              </p>
+            </div>
+
+            <Button
+              asChild
+              className="bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              <a href="/contact">Contact for Booking Enquiry</a>
+            </Button>
+          </div>
+
+          {/* Desktop image - shows only on desktop */}
+          <div className="hidden lg:block">
+            <Image
+              src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750929387/Screenshot_2025-06-26_at_14.43.54_m7ni8b.png"
+              alt="Ashram in Kandy, Sri Lanka"
+              width={600}
+              height={500}
+              className="w-full h-full object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
       {/* Reviews Section */}
-<div className="text-center mb-8">
-  <h2 className="text-5xl font-merienda font-bold text-primary-custom">Reviews</h2>
-</div>
-
-<div className="overflow-x-auto px-2">
-  <div
-    ref={reviewsRef}
-    className="flex space-x-8 pb-4"
-    style={{
-      scrollSnapType: "x mandatory",
-      WebkitOverflowScrolling: "touch",
-    }}
-  >
-    {reviews.map((review, index) => (
-      <div
-        key={index}
-        className="flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-        style={{ scrollSnapAlign: "start" }}
-      >
-        <div className="flex items-center mb-6">
-          <div className="w-12 h-12 bg-primary-custom rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
-            {review.image}
-          </div>
-          <h4 className="font-bold text-gray-900 text-lg">-{review.name}</h4>
-        </div>
-        <p className="text-gray-600 italic leading-relaxed">{review.text}</p>
+<>
+      <div className="text-center mb-8">
+        <h2 className="text-5xl font-merienda font-bold text-primary-custom">Reviews</h2>
       </div>
-    ))}
-  </div>
-</div>
+
+      <div className="overflow-x-auto px-2">
+        <div
+          ref={reviewsRef}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          className="flex space-x-8 pb-4"
+          style={{
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+            overflowX: "auto",
+          }}
+        >
+          {reviews.map((review, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-80 sm:w-96 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-primary-custom rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
+                  {review.image}
+                </div>
+                <h4 className="font-bold text-gray-900 text-lg">-{review.name}</h4>
+              </div>
+              <p className="text-gray-600 italic leading-relaxed">{review.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
 
 
 
