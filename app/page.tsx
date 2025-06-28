@@ -421,12 +421,13 @@ export default function Home() {
 
   {/* Image Section */}
   <div className="md:w-1/2 flex justify-center">
-    <img 
-      src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100336/WhatsApp_Image_2025-06-27_at_08.57.53_gm58yt.jpg" 
-      alt="Prana Chitta Ashram" 
-      className="w-64 h-auto object-contain"
-    />
-  </div>
+  <img 
+    src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100336/WhatsApp_Image_2025-06-27_at_08.57.53_gm58yt.jpg" 
+    alt="Prana Chitta Ashram" 
+    className="w-64 h-auto object-contain rounded-xl"
+  />
+</div>
+
 </div>
 
 
