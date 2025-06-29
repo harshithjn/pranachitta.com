@@ -168,7 +168,37 @@ export default function Home() {
         </div>
       </section>
 
-  
+  <div className="max-w-6xl mx-auto px-4 mt-12">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {/* First Image */}
+    <div>
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751174288/WhatsApp_Image_2025-06-28_at_20.15.42_pltifx.jpg" 
+        alt="Image 1" 
+        className="w-full h-auto rounded-lg object-cover aspect-video"
+      />
+    </div>
+
+    {/* Second Image */}
+    <div>
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751174287/WhatsApp_Image_2025-06-28_at_20.15.41_mrtnxn.jpg" 
+        alt="Image 2" 
+        className="w-full h-auto rounded-lg object-cover aspect-video"
+      />
+    </div>
+
+    {/* Third Image */}
+    <div>
+      <img 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_djggks.jpg" 
+        alt="Image 3" 
+        className="w-full h-auto rounded-lg object-cover aspect-video"
+      />
+    </div>
+  </div>
+</div>
+
 
       {/* What We Offer - Minimal */}
       <section id="offerings" className="py-20 px-4 bg-white">
@@ -326,32 +356,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="max-w-3xl mx-auto px-4 mt-12">
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {/* Left Column: 2 horizontal images stacked vertically */}
-    <div className="md:col-span-2 grid grid-rows-2 gap-4">
-      <img 
-        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_1_fuqxpz.jpg" 
-        alt="Horizontal 1" 
-        className="w-full h-auto rounded-lg object-cover"
-      />
-      <img 
-        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_djggks.jpg" 
-        alt="Horizontal 2" 
-        className="w-full h-auto rounded-lg object-cover"
-      />
-    </div>
-
-    {/* Right Column: 1 vertical image */}
-    <div className="flex">
-      <img 
-        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100865/WhatsApp_Image_2025-06-27_at_08.32.22_k7si2q.jpg" 
-        alt="Vertical" 
-        className="w-full h-auto rounded-lg object-cover"
-      />
-    </div>
-  </div>
-</div>
+      
 
 
       <section id="about" className="py-20 px-4 bg-white">
