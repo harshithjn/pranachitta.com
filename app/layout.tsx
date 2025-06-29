@@ -5,6 +5,7 @@ import { Merienda, Quicksand } from "next/font/google"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import ClientLayout from "@/components/ClientLayout"
+import Script from "next/script"
 
 const merienda = Merienda({
   subsets: ["latin"],
@@ -27,7 +28,6 @@ export const metadata: Metadata = {
   },
 }
 
-
 export default function RootLayout({
   children,
 }: {
@@ -35,6 +35,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${merienda.variable} ${quicksand.variable}`}>
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1P88X7Y7N3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1P88X7Y7N3');
+          `}
+        </Script>
+      </head>
       <body className="font-quicksand">
         <ClientLayout>
           <Header />
