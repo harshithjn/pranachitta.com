@@ -173,7 +173,7 @@ export default function Home() {
     {/* First Image */}
     <div>
       <img 
-        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751174288/WhatsApp_Image_2025-06-28_at_20.15.42_pltifx.jpg" 
+        src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751100866/WhatsApp_Image_2025-06-27_at_08.32.23_1_fuqxpz.jpg" 
         alt="Image 1" 
         className="w-full h-auto rounded-lg object-cover aspect-video"
       />
