@@ -54,17 +54,14 @@ export default function Footer() {
           <div>
             <h4 className="font-merienda text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-primary-custom" />
-                <span className="text-gray-300">Kandy, Sri Lanka</span>
-              </li>
+              
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-custom" />
                 <span className="text-gray-300">pranachitta@gmail.com</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-custom" />
-                <span className="text-gray-300">+94 76 200 2926</span>
+                <span className="text-gray-300">+91 84948 02474</span>
               </li>
             </ul>
           </div>

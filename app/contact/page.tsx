@@ -105,7 +105,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Phone</h3>
-                      <p className="text-gray-600">+94 76 200 2926</p>
+                      <p className="text-gray-600">+91 84948 02474</p>
                       <p className="text-sm text-gray-500">Available daily 8AM-8PM</p>
                     </div>
                   </div>
@@ -124,18 +124,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-center">
-                    <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
-                      <MapPin className="h-6 w-6 text-primary-custom" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Ashram Location</h3>
-                      <p className="text-gray-600">Kandy, Sri Lanka</p>
-                      <p className="text-gray-600">Opening Soon</p>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
