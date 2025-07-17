@@ -31,7 +31,7 @@ export default function PricingPage() {
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-quicksand text-gray-700">1.5 hours session</span>
-                  <span className="font-merienda text-xl font-bold text-primary-custom">40€</span>
+                  <span className="font-merienda text-xl font-bold text-primary-custom">50€</span>
                 </div>
               </div>
             </CardContent>
@@ -50,11 +50,11 @@ export default function PricingPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="font-quicksand text-gray-700">4 × 1h sessions</span>
-                  <span className="font-merienda text-xl font-bold text-primary-custom">135€</span>
+                  <span className="font-merienda text-xl font-bold text-primary-custom">130€</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-quicksand text-gray-700">4 × 1.5h sessions</span>
-                  <span className="font-merienda text-xl font-bold text-primary-custom">150€</span>
+                  <span className="font-merienda text-xl font-bold text-primary-custom">180€</span>
                 </div>
               </div>
             </CardContent>
