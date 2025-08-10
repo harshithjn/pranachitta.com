@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #38550a;
+  --primary-color: #1D482D;
   --primary-light: #4a6b0d;
   --primary-dark: #2a4008;
 }
@@ -52,19 +52,19 @@
 }
 
 .text-primary-custom {
-  color: #38550a;
+  color: #1D482D;
 }
 
 .bg-primary-custom {
-  background-color: #38550a;
+  background-color: #1D482D;
 }
 
 .border-primary-custom {
-  border-color: #38550a;
+  border-color: #1D482D;
 }
 
 .from-primary-custom {
-  --tw-gradient-from: #38550a;
+  --tw-gradient-from: #1D482D;
 }
 
 .to-primary-custom {

@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Leaf } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Leaf, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -27,8 +27,7 @@ export default function Contact() {
               <span className="text-primary-custom block mt-2">Touch</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Ready to begin your healing journey? We're here to support you every step of the way. 
-              Reach out with any questions or to schedule your first session.
+              Ready to begin your journey? Reach out with any questions or to schedule your first session.
             </p>
           </div>
         </div>
@@ -110,7 +109,18 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-
+<div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
+                      <Instagram className="h-6 w-6 text-primary-custom" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Instagram</h3>
+                      <p className="text-gray-600">pranachittaashram</p>
+                      <p className="text-sm text-gray-500">We will respond within 24 hours</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center">
                     <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
@@ -121,6 +131,7 @@ export default function Contact() {
                       <p className="text-gray-600">pranachitta@gmail.com</p>
                       <p className="text-sm text-gray-500">We respond within 24 hours</p>
                     </div>
+                    
                   </div>
                 </div>
 
@@ -133,39 +144,53 @@ export default function Contact() {
 
       {/* FAQ Section */}
       <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-16">
-            <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600">Quick answers to common questions about our offerings</p>
-          </div>
-          <div className="space-y-6">
-            {[
-              {
-                question: "What should I expect in my first session?",
-                answer: "Your first session will begin with a consultation to understand your goals and any health considerations. We'll then guide you through gentle breathing techniques and basic practices to help you feel comfortable and supported."
-              },
-              {
-                question: "Do I need any special equipment for online sessions?",
-                answer: "All you need is a stable internet connection, a quiet space, and comfortable clothing. A yoga mat is helpful but not required. We recommend using headphones for the best audio experience."
-              },
-              {
-                question: "Are there any health conditions that prevent participation?",
-                answer: "While breathwork is generally safe, certain conditions require medical clearance. Please consult with your healthcare provider if you have heart conditions, high blood pressure, or are pregnant."
-              },
-              {
-                question: "Can I switch between online and offline sessions?",
-                answer: "Absolutely! Many of our clients enjoy both formats. Online sessions offer convenience and flexibility, while offline sessions provide hands-on guidance and community connection."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-all duration-300">
-                <h3 className="font-semibold text-gray-900 mb-3 text-lg">{faq.question}</h3>
-                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+  <div className="container mx-auto max-w-4xl">
+    <div className="text-center mb-16">
+      <h2 className="font-merienda text-4xl font-bold text-gray-900 mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div className="w-16 h-1 bg-primary-custom mx-auto mb-6"></div>
+      <p className="text-xl text-gray-600">
+        Quick answers to common questions about our offerings
+      </p>
+    </div>
+    <div className="space-y-6">
+      {[
+        {
+          question: "What should I expect in my first session?",
+          answer:
+            "Your first session will begin with a consultation to understand your goals and any health considerations. You will then be guided through basic practices to help you feel comfortable and supported."
+        },
+        {
+          question: "Do I need any special equipment for online sessions?",
+          answer:
+            "All you need is a stable internet connection, a quiet space and comfortable clothing. A yoga mat is helpful, but not required. Using headphones for the best audio experience is recommended."
+        },
+        {
+          question: "Are there any health conditions that prevent participation?",
+          answer:
+            "While yoga and breathwork are generally safe, certain conditions require medical clearance. Please consult with your healthcare provider if you have heart conditions, high blood pressure or are pregnant."
+        },
+        {
+          question: "Can I switch between online and offline sessions?",
+          answer:
+            "Absolutely! Many clients enjoy both formats. Online sessions offer convenience and flexibility, while offline sessions provide hands-on guidance and community connection."
+        }
+      ].map((faq, index) => (
+        <div
+          key={index}
+          className="bg-gray-50 rounded-2xl p-6 hover:bg-gray-100 transition-all duration-300"
+        >
+          <h3 className="font-semibold text-gray-900 mb-3 text-lg">
+            {faq.question}
+          </h3>
+          <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Call to Action */}
       <section className="py-20 px-4 bg-primary-custom">

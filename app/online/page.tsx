@@ -103,7 +103,8 @@ export default function OnlinePage() {
         </div>
         <h1 className="font-merienda text-5xl font-bold text-gray-900 mb-6">Online <span className="text-primary-custom block mt-2">Sessions</span></h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Join our virtual sessions from anywhere in the world. Meditation, yoga, breathwork – everything you need.
+          Join our virtual sessions from anywhere in the world.
+
         </p>
       </section>
 

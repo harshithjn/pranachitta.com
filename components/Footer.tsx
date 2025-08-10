@@ -18,8 +18,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6">
-              A meditation center and ashram for the living heart-mind, supporting individuals in awakening their life
-              energy and softening into the wholeness of the present moment.
+              Offering practices that support individuals in awakening their life energy and softening into the wholeness of the present moment- available worldwide and online.
+
             </p>
           </div>
 

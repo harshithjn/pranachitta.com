@@ -127,7 +127,7 @@ export default function OfflinePage() {
         </div>
         <h1 className="font-merienda text-5xl font-bold text-gray-900 mb-6">In-Person <span className="text-primary-custom block mt-2">Sessions</span></h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Experience the power of presence in our sacred spaces. Join us for transformative in-person sessions, workshops, and retreats.
+         Experience the power of collective practice in our sessions, workshops and retreats 
         </p>
       </section>
 

@@ -74,7 +74,7 @@ export default function PricingPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-gray-100">
                   <span className="font-quicksand text-gray-700">4-session bundle</span>
-                  <span className="font-merienda text-xl font-bold text-primary-custom">40€</span>
+                  <span className="font-merienda text-xl font-bold text-primary-custom">50€</span>
                 </div>
                 <div className="flex justify-between items-center py-3">
                   <span className="font-quicksand text-gray-700">Drop-in (single session)</span>
@@ -103,7 +103,7 @@ export default function PricingPage() {
                     <span className="font-quicksand text-gray-700">Bundle (4 × 2h)</span>
                     <div className="text-right">
                       <div className="font-merienda text-xl font-bold text-primary-custom">240€</div>
-                      <div className="text-sm text-gray-500 font-quicksand">60€ per session</div>
+                      
                     </div>
                   </div>
                 </div>
