@@ -22,7 +22,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-12 h-12  flex items-center justify-center">
-  <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751099994/Screenshot_2025-06-28_at_14.08.48-removebg-preview_ohd9mh.png" alt="Icon" className="h-25 w-25" />
+  <img src="https://res.cloudinary.com/dtzqrfg6q/image/upload/v1754922215/WhatsApp_Image_2025-08-11_at_18.21.46-removebg-preview_fosqw4.png" alt="Icon" className="h-25 w-25" />
 </div>
 
             <div>

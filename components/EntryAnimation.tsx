@@ -75,7 +75,7 @@ export default function EntryAnimation({ onComplete }: EntryAnimationProps) {
   }}
 >
   <img
-    src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751099994/Screenshot_2025-06-28_at_14.08.48-removebg-preview_ohd9mh.png"
+    src="https://res.cloudinary.com/dtzqrfg6q/image/upload/v1754922215/WhatsApp_Image_2025-08-11_at_18.21.46-removebg-preview_fosqw4.png"
     alt="Prana Chitta Ashram Logo"
     className={`h-24 w-24 object-contain transition-all duration-1000 ${
       stage >= 1 ? "scale-100" : "scale-75"
