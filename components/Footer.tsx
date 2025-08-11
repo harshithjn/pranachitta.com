@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Leaf, Mail, MapPin, Phone } from "lucide-react"
+import { Instagram, Leaf, Mail, MapPin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -9,9 +9,7 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-white  flex items-center justify-center">
-  <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750762022/Transparent-01_x7azvw.png" alt="Icon" className="h-15 w-15" />
-</div>
+             
               <div>
                 <h3 className="font-merienda text-xl font-bold">Prana Chitta Ashram</h3>
                 <p className="font-merienda text-sm text-primary-custom/80">Breathing into loving awareness</p>
@@ -62,6 +60,10 @@ export default function Footer() {
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary-custom" />
                 <span className="text-gray-300">+91 84948 02474</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <Instagram className="h-4 w-4 text-primary-custom" />
+                <span className="text-gray-300">@pranachittaashram</span>
               </li>
             </ul>
           </div>

@@ -294,7 +294,6 @@ export default function Home() {
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Join virtual sessions from anywhere in the world. Yoga, breathwork, guided meditation and more!
-.
                 </p>
                 <Link href="/online">
                   <Button className="mt-6 bg-primary-custom hover:bg-primary-dark text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
@@ -430,52 +429,53 @@ export default function Home() {
 
       </div>
     </section>
-<section>
-  <div className="flex flex-col lg:flex-row gap-6">
-  {/* Phone */}
-  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex-1">
-    <div className="flex items-center">
-      <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
-        <Phone className="h-6 w-6 text-primary-custom" />
+<section className="py-16 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-center text-gray-900 mb-10">
+      Get in Touch
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      {/* Phone */}
+      <div className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div className="flex flex-col items-center text-center">
+          <div className="p-4 bg-primary-custom/10 rounded-full mb-4 group-hover:scale-110 transition-transform">
+            <Phone className="h-8 w-8 text-primary-custom" />
+          </div>
+          <h3 className="font-semibold text-gray-900 text-lg mb-1">Phone</h3>
+          <p className="text-gray-600">+91 84948 02474</p>
+          <p className="text-sm text-gray-500 mt-1">Available daily 8AM–8PM</p>
+        </div>
       </div>
-      <div>
-        <h3 className="font-semibold text-gray-900">Phone</h3>
-        <p className="text-gray-600">+91 84948 02474</p>
-        <p className="text-sm text-gray-500">Available daily 8AM-8PM</p>
+
+      {/* Instagram */}
+      <div className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div className="flex flex-col items-center text-center">
+          <div className="p-4 bg-pink-100 rounded-full mb-4 group-hover:scale-110 transition-transform">
+            <Instagram className="h-8 w-8 text-pink-500" />
+          </div>
+          <h3 className="font-semibold text-gray-900 text-lg mb-1">Instagram</h3>
+          <p className="text-gray-600">@pranachittaashram</p>
+          <p className="text-sm text-gray-500 mt-1">We reply within 24 hours</p>
+        </div>
       </div>
+
+      {/* Email */}
+      <div className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div className="flex flex-col items-center text-center">
+          <div className="p-4 bg-blue-100 rounded-full mb-4 group-hover:scale-110 transition-transform">
+            <Mail className="h-8 w-8 text-blue-500" />
+          </div>
+          <h3 className="font-semibold text-gray-900 text-lg mb-1">Email</h3>
+          <p className="text-gray-600">pranachitta@gmail.com</p>
+          <p className="text-sm text-gray-500 mt-1">We reply within 24 hours</p>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  {/* Instagram */}
-  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex-1">
-    <div className="flex items-center">
-      <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
-        <Instagram className="h-6 w-6 text-primary-custom" />
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-900">Instagram</h3>
-        <p className="text-gray-600">pranachittaashram</p>
-        <p className="text-sm text-gray-500">We will respond within 24 hours</p>
-      </div>
-    </div>
-  </div>
-
-  {/* Email */}
-  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex-1">
-    <div className="flex items-center">
-      <div className="p-3 bg-primary-custom/10 rounded-full mr-4">
-        <Mail className="h-6 w-6 text-primary-custom" />
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-900">Email</h3>
-        <p className="text-gray-600">pranachitta@gmail.com</p>
-        <p className="text-sm text-gray-500">We respond within 24 hours</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 </section>
+
       {/* About Teacher Section with Image */}
       <section className="py-20 px-4 bg-gray-50">
   <div className="container mx-auto max-w-6xl">
@@ -507,7 +507,7 @@ export default function Home() {
     trauma-informed counseling and extensive teacher training in Hatha, Ashtanga and Vinyasa Yoga, as well as
     initiation into Kriya Yoga. She has special interest and experience in conscious connected breathwork,
     advanced pranayama and subtle energy work through the lens of the chakra system. She is also certified in
-    Pre- and Postnatal Yoga, guided by Ayurvedic principles and a holistic understanding of the feminine journey.
+    Pre- and Postnatal Yoga, guided by Ayurvedic principles and has a holistic understanding of the feminine journey.
   </p>
   <p>
     Gitana facilitates both active and still practices, drawing inspiration from traditional Tantra, Osho’s

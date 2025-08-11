@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-white  flex items-center justify-center">
+            <div className="w-12 h-12  flex items-center justify-center">
   <img src="https://res.cloudinary.com/dbewukdt0/image/upload/v1751099994/Screenshot_2025-06-28_at_14.08.48-removebg-preview_ohd9mh.png" alt="Icon" className="h-25 w-25" />
 </div>
 

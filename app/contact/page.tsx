@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, Leaf, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import Link from "next/link";
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -196,9 +197,14 @@ export default function Contact() {
       <section className="py-20 px-4 bg-primary-custom">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="font-merienda text-4xl font-bold text-white mb-4">Ready to Begin Your Journey?</h2>
-          <Button size="lg" className="bg-white text-primary-custom hover:bg-white/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-6">
-            Schedule Free Consultation
-          </Button>
+          <Link href="/contact">
+  <Button
+    size="lg"
+    className="bg-white text-primary-custom hover:bg-white/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-6"
+  >
+    Schedule Free Consultation
+  </Button>
+</Link>
         </div>
       </section>
     </div>
