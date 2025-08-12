@@ -31,32 +31,32 @@ export default function Home() {
   const reviews = [
     {
       name: "Simona Anna",
-      text: 'Meeting Gitana and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
+      text: 'Meeting anandi and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
       image: "SA",
     },
     {
       name: "Monica",
-      text: "Gitana has been such a beautiful addition to our lives. Working with her has truly been transformational for both me and my husband. She's given us tools to better regulate our nervous systems and helped us connect more deeply with our inner worlds - and with each other. Her sessions create such a safe, open space to release, reflect, and speak freely. We always leave feeling more grounded, connected, and understood. So grateful for her work!",
+      text: "Anandi has been such a beautiful addition to our lives. Working with her has truly been transformational for both me and my husband. She's given us tools to better regulate our nervous systems and helped us connect more deeply with our inner worlds - and with each other. Her sessions create such a safe, open space to release, reflect, and speak freely. We always leave feeling more grounded, connected, and understood. So grateful for her work!",
       image: "M",
     },
     {
       name: "Joanne",
-      text: "I attended one of Gitana's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
+      text: "I attended one of anandi's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
       image: "J",
     },
     {
       name: "Anjali",
-      text: "As a yoga teacher myself, I was blown away by the depth, wisdom and love that Gitana embodied in each session. Her facilitation was a masterclass in holding space, guiding exploration and nurturing growth. Over the 2-weeks, I felt my entire being unwind, calm and center. The practices, discussions and meditations were expertly woven together (…) Gitana's guidance was instrumental in helping me navigate my chakra practice. Her insights and suggestions were practical, compassionate and empowering",
+      text: "As a yoga teacher myself, I was blown away by the depth, wisdom and love that anandi embodied in each session. Her facilitation was a masterclass in holding space, guiding exploration and nurturing growth. Over the 2-weeks, I felt my entire being unwind, calm and center. The practices, discussions and meditations were expertly woven together (…) anandi's guidance was instrumental in helping me navigate my chakra practice. Her insights and suggestions were practical, compassionate and empowering",
       image: "A",
     },
     {
       name: "Sine",
-      text: "I really had a great time learning with Gitana. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
+      text: "I really had a great time learning with anandi. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
       image: "S",
     },
     {
       name: "Dominique",
-      text: "Was blessed with meeting Gitana and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
+      text: "Was blessed with meeting anandi and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
       image: "D",
     },
   ]
@@ -121,12 +121,13 @@ export default function Home() {
             </div>
             <div className="relative">
               <Image
-                src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750938287/Screenshot_2025-06-26_at_17.14.25_bqodcg.png"
-                alt="Meditation and breathwork practice"
-                width={600}
-                height={400}
-                className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover rounded-3xl shadow-2xl"
-              />
+  src="https://res.cloudinary.com/dbewukdt0/image/upload/v1750938287/Screenshot_2025-06-26_at_17.14.25_bqodcg.png"
+  alt="Meditation and breathwork practice"
+  width={600}
+  height={400}
+  className="w-full h-screen sm:h-80 md:h-96 lg:h-[500px] object-cover rounded-3xl shadow-2xl"
+/>
+
             </div>
           </div>
         </div>
@@ -469,7 +470,7 @@ export default function Home() {
               {/* Description */}
               <div className="space-y-6 text-gray-700 leading-relaxed text-xl lg:text-xl">
                 <p>
-                  Gitana brings over 17 years of dedicated practice and study in yoga, breathwork, meditation and
+                  Anandi brings over 17 years of dedicated practice and study in yoga, breathwork, meditation and
                   somatic healing—years of this spent in India learning through traditional methods. Her work weaves
                   together ancient wisdom traditions and modern therapeutic insight, offering a grounded, supportive
                   space for personal exploration. With a focus on nervous system regulation and emotional integration,
@@ -484,7 +485,7 @@ export default function Home() {
                   understanding of the feminine journey.
                 </p>
                 <p>
-                  Gitana facilitates both active and still practices, drawing inspiration from traditional Tantra,
+                  Anandi facilitates both active and still practices, drawing inspiration from traditional Tantra,
                   Osho's active meditations, the clarity and presence of Buddhist Mahamudra, the heart-opening path of
                   Sufism and the devotional spirit of mantra chanting and Bhakti Yoga.
                 </p>
@@ -512,7 +513,7 @@ export default function Home() {
               <div className="w-full overflow-hidden shadow-2xl rounded-lg">
                 <Image
                   src="https://res.cloudinary.com/dtzqrfg6q/image/upload/v1754816940/Screenshot_2025-08-10_at_14.26.40_gogola.png"
-                  alt="Gitana - Teacher and Founder"
+                  alt="anandi - Teacher and Founder"
                   width={520}
                   height={520}
                   className="w-full h-64 sm:h-80 lg:h-96 object-cover object-top"

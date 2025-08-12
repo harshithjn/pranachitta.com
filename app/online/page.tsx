@@ -123,9 +123,7 @@ export default function OnlinePage() {
                 className="hover:shadow-xl transition duration-300"
               >
                 <CardContent className="p-6 space-y-4">
-                  <span className="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">
-                    {event.type}
-                  </span>
+                  
                   <h3 className="text-xl font-bold font-merienda text-gray-900">{event.title}</h3>
                   <div className="flex items-center text-sm text-gray-600">
                     <Calendar className="h-4 w-4 mr-2" />

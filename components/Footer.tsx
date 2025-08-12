@@ -9,7 +9,9 @@ export default function Footer() {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-             
+             <div className="w-12 h-12  flex items-center justify-center">
+  <img src="https://res.cloudinary.com/dtzqrfg6q/image/upload/v1754922215/WhatsApp_Image_2025-08-11_at_18.21.46-removebg-preview_fosqw4.png" alt="Icon" className="h-25 w-25" />
+</div>
               <div>
                 <h3 className="font-merienda text-xl font-bold">Prana Chitta Ashram</h3>
                 <p className="font-merienda text-sm text-primary-custom/80">Breathing into loving awareness</p>
