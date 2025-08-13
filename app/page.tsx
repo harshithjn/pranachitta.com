@@ -31,7 +31,7 @@ export default function Home() {
   const reviews = [
     {
       name: "Simona Anna",
-      text: 'Meeting anandi and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
+      text: 'Meeting Anandi and participating in her meditation classes was really a "Gift from the Universe". Each meditation was an opportunity of deep listening and healing ourselves. She was handling every moment with presence & an open heart. So grateful for all her sharing & teaching. Hope to get the chance to meet her again in early future!',
       image: "SA",
     },
     {
@@ -41,7 +41,7 @@ export default function Home() {
     },
     {
       name: "Joanne",
-      text: "I attended one of anandi's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
+      text: "I attended one of Anandi's Breathwork Sessions in Rishikesh, having never taken part in anything like this before. I felt an instant safe, genuine connection so I decided to keep in touch through taking online classes. We have been working on pranayama techniques, breathwork and kundalini yoga to remove stored emotional trauma which has ran my life for too long. Now, my life is being brought back up from this lovely caring soul! ❤️ So grateful 🌸 Thanking you so much for being in my life 🌸",
       image: "J",
     },
     {
@@ -51,12 +51,12 @@ export default function Home() {
     },
     {
       name: "Sine",
-      text: "I really had a great time learning with anandi. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
+      text: "I really had a great time learning with Anandi. She created a warm and welcoming environment that made every lesson special. Her friendly and approachable nature, combined with the supportive atmosphere she fostered, made the whole experience truly wonderful. I would definitely recommend to anyone!",
       image: "S",
     },
     {
       name: "Dominique",
-      text: "Was blessed with meeting anandi and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
+      text: "Was blessed with meeting Anandi and learning so much from her on both a personal and spiritual level! Really looking forward to coming to Sri Lanka for a course!",
       image: "D",
     },
   ]
@@ -463,7 +463,7 @@ export default function Home() {
               <div>
                 <div className="flex items-center mb-6">
                   <User className="h-8 w-8 text-primary-custom mr-3" />
-                  <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Founder & Facilitator</h2>
+                  <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Founder & Main Facilitator</h2>
                 </div>
                 <div className="w-25 h-1 bg-primary-custom mb-8"></div>
               </div>
