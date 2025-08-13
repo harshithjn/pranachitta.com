@@ -463,7 +463,7 @@ export default function Home() {
               <div>
                 <div className="flex items-center mb-6">
                   <User className="h-8 w-8 text-primary-custom mr-3" />
-                  <h2 className="font-merienda text-4xl font-bold text-gray-900">Meet Founder & Main Facilitator</h2>
+                  <h2 className="font-merienda text-3xl font-bold text-gray-900">Founder & <br></br> Main Facilitator</h2>
                 </div>
                 <div className="w-25 h-1 bg-primary-custom mb-8"></div>
               </div>
