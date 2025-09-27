@@ -344,6 +344,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="bg-gray-50 py-12 px-4 md:px-10">
+      <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-lg px-10 md:px-16 py-8 flex flex-col justify-center">
+        <h2 className="text-2xl font-merienda md:text-3xl font-semibold text-center text-gray-800 mb-6">
+          Lena's Testimonial
+        </h2>
+
+        <div className="space-y-4 text-base md:text-lg leading-relaxed text-gray-700">
+          <p>
+            Working with <span className="font-semibold text-gray-900">Gitana</span> has been
+            incredibly beneficial for me. She is highly experienced, sensitive,
+            and from the very beginning, she addressed my biographical and
+            physical peculiarities. The Yoga sessions have been immensely helpful
+            in reducing my stress and improving my body awareness. Through the
+            Conscious Connected Breathing, I’ve been able to process and release
+            trauma and anxieties that had been blocking my body and mind for
+            decades.
+          </p>
+
+          <p>Furthermore, there have been unexpected side effects:</p>
+
+          <ul className="list-disc list-inside grid grid-cols-2 gap-x-8 gap-y-1">
+            <li>I’m physically more flexible</li>
+            <li>I can jog for longer thanks to improved breath control</li>
+            <li>My ADHD symptoms have noticeably decreased</li>
+            <li>My handwriting has improved</li>
+            <li>My nightmares have been reduced</li>
+          </ul>
+
+          <p className="font-medium">
+            I would wholeheartedly recommend her –{" "}
+            <span className="font-bold text-gray-900">100%</span>.
+          </p>
+        </div>
+      </div>
+    </section>
 
       <section id="about" className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
