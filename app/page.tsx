@@ -55,9 +55,9 @@ export default function Home() {
       image: "S",
     },
     {
-  name: "Client",
+  name: "Lena",
   text: "Working with Gitana has been incredibly beneficial for me. She is highly experienced, sensitive, and from the very beginning, she addressed my biographical and physical peculiarities. It’s particularly important to note that she never pushes exercises that feel uncomfortable or don’t feel right. If I’m not comfortable with an exercise, she immediately switches to another, without me needing to justify it. The Yoga sessions have been immensely helpful in reducing my stress and improving my body awareness. Through the Conscious Connected Breathing, I’ve been able to process and release trauma and anxieties that had been blocking my body and mind for decades. Furthermore, there have been unexpected side effects: I’m physically more flexible, I can jog for longer thanks to the improved breath control, my ADHD symptoms have noticeably decreased, my handwriting has improved, and my nightmares have been reduced. I would wholeheartedly recommend her – 100%.",
-  image: "C",
+  image: "L",
 }
 
   ]
