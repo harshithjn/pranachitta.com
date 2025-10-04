@@ -201,7 +201,7 @@ export default function Home() {
                 icon: <Heart className="h-8 w-8" />,
               },
               {
-                title: "Kundalini Kriya Yoga",
+                title: "Kundalini Tantra Yoga",
                 description: "Purifying and harmonizing your life energy through breath, movement and deep inner focus",
                 icon: <Move className="h-8 w-8" />,
               },
@@ -209,7 +209,7 @@ export default function Home() {
                 title: "Somatic Movement",
                 description:
                   "Gentle, intuitive motion to release stored tension and reconnect with your body's natural wisdom.",
-                icon: <Move className="h-8 w-8" />,
+                icon: <ArrowRight className="h-8 w-8" />,
               },
               {
                 title: "Silence & Inner Inquiry",
