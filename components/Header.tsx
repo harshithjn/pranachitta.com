@@ -11,7 +11,6 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Online Sessions", href: "/online" },
     { name: "In-Person Events", href: "/offline" },
-    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
   ]
 
