@@ -222,17 +222,7 @@ export default function OnlinePage() {
         </DialogContent>
       </Dialog>
 
-      <section className="py-20 px-4 bg-primary-custom">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="font-merienda text-4xl font-bold text-white mb-4">Check out the pricing</h2>
-          <a
-            href="/pricing"
-            className="inline-block bg-white text-primary-custom hover:bg-white/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mt-6"
-          >
-            View pricing
-          </a>
-        </div>
-      </section>
+      
 
       {/* Contact Form Dialog */}
       <Dialog open={showContactForm} onOpenChange={setShowContactForm}>
